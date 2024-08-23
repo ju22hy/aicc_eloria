@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <div className="App">
+      <WeeklySection />
       <Navbar />
       <p>폰트 테스트</p>
       <p>font test test</p>
