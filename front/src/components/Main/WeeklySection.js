@@ -6,8 +6,10 @@ const WeeklySection = () => {
     <div class="weekly_container">
       <section class="weekly_best">
         <div class="weekly_banners">
-          <h1>WEEKLY BEST</h1>
-          <p>금주의 베스트 인기 상품</p>
+          <h1>
+            WEEKLY BEST <br />
+            금주의 베스트 인기 상품
+          </h1>
           <div>imgae_sample</div>
         </div>
 
