@@ -1,27 +1,36 @@
 import React from "react";
 
+// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+// import required modules
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+// Import Swiper styles
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./herosection.css";
 
 const HeroSection = () => {
   return (
-    <div>
+    <div className="swiper-container">
       <Swiper
-        modules={[Navigation, Pagination]}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        modules={[Navigation, Pagination, Autoplay]}
+        slidesPerView={1}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false, // 마우스 제어 이후 자동 재생을 막을지 말지
+        }}
+        speed={300}
+        loop={true}
+        navigation={true}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        className="mySwiper"
       >
         <SwiperSlide>Slide 1</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
       </Swiper>
     </div>
   );
