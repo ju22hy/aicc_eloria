@@ -6,7 +6,7 @@ import "./navbar.css";
 const Navbar = () => {
   return (
     <nav>
-      <div className="container">
+      <div className="nav_container">
         <div className="nav_wrapper">
           <ul className="nav_left">
             {navItems.map((item, idx) => (
