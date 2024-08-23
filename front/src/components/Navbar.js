@@ -15,7 +15,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div className="logo">
+          <div className="nav_logo">
             <span className="text-4xl font-extrabold">
               <a href="/">Eloria</a>
             </span>
