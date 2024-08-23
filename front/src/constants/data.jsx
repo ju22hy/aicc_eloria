@@ -1,5 +1,6 @@
+export const home = [{ label: "HOME", to: "/" }];
+
 export const navItems = [
-  { label: "HOME", to: "/" },
   { label: "ABOUT", to: "/about" },
   { label: "WOMANS", to: "/category1" },
   { label: "MANS", to: "/category2" },

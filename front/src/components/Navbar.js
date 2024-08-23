@@ -1,6 +1,7 @@
 import React from "react";
-import { headerItems, navItems } from "../constants/data";
+import { headerItems, home, navItems } from "../constants/data";
 import { Link } from "react-router-dom";
+import "./navbar.css";
 
 const Navbar = () => {
   return (
@@ -15,7 +16,9 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="logo">
-            <span className="text-4xl font-extrabold">LOGO</span>
+            <span className="text-4xl font-extrabold">
+              <a href="/">Eloria</a>
+            </span>
           </div>
           <ul className="nav_right">
             {headerItems.map((item, idx) => (
