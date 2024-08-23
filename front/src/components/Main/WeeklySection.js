@@ -1,20 +1,22 @@
 import React from "react";
+import "./Weekly.css";
 
 const WeeklySection = () => {
   return (
-    <div class="container">
+    <div class="weekly_container">
       <section class="weekly_best">
-        <h1>WEEKLY BEST</h1>
-        <p>금주의 베스트 인기 상품</p>
+        <div class="weekly_banners">
+          <h1>WEEKLY BEST</h1>
+          <p>금주의 베스트 인기 상품</p>
+          <div>imgae_sample</div>
+        </div>
 
-        <div class="best-items">
-          <div class="item_left">상품명</div>
-          <div class="item_right">
-            상품영상상품영상상품명
-            <br />
-            간단한 상품설명상품설명상품설명
+        <div class="best_items">
+          <div class="item_left">
+            왼쪽 이미지<a href=""></a>
           </div>
-          <div class="item item-small">상품명</div>
+          <div class="item_center">메인 이미지</div>
+          <div class="item-right">오른쪽 이미지</div>
         </div>
       </section>
     </div>

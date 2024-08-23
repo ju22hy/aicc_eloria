@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.weekly_container {
+  width: 100%;
+  padding: 80px;
+  margin: auto;
+}
+
+.weekly_banners {
+  display: flex;
+}
+
+.weekly_best {
+  margin-bottom: 40px;
+}
+
+h1,
+h2 {
+  margin-bottom: 10px;
+}
+
+.weekly_best {
+  margin-bottom: 20px;
+  color: #777;
+}
+
+.best_items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item_center {
+}
+
+.item_right {
+  width: 30%;
+  height: 200px;
+}
+
+.item_large {
+  width: 60%;
+  height: 400px;
+}
