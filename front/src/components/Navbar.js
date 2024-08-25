@@ -17,7 +17,9 @@ const Navbar = () => {
           </ul>
           <div className="nav_logo">
             <span className="text-4xl font-extrabold">
-              <a href="/">Eloria</a>
+              <a href="/" className="text-white">
+                Eloria
+              </a>
             </span>
           </div>
           <ul className="nav_right">
