@@ -29,7 +29,7 @@
 
 /* 슬라이드 내 이미지가 슬라이드를 채우도록 설정 */
 .swiper-slide img {
-  _display: block; /* 블록 요소로 설정 */
+  display: block; /* 블록 요소로 설정 */
   width: 100%; /* 이미지 너비를 슬라이드 너비와 맞춤 */
   height: 100%; /* 이미지 높이를 슬라이드 높이와 맞춤 */
   object-fit: cover; /* 이미지가 슬라이드를 완전히 채우도록 설정 */
@@ -53,33 +53,30 @@
   opacity: 0.8;
 }
 
-/* 기본 네비게이션 버튼 숨기기 */
+/* 기본 네비게이션 버튼 스타일 */
 .swiper-button-next,
 .swiper-button-prev {
-  display: none !important;
-}
-
-/* 아이콘 스타일 */
-.custom-swiper-button-prev svg,
-.custom-swiper-button-next svg {
-  font-size: 40px;
   color: #fff;
+  opacity: 0;
+  visibility: hidden; /* 기본 상태에서 버튼 숨기기 */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* 마우스가 왼쪽에 있을 때 왼쪽 버튼만 보이도록 설정 */
+.swiper-container.hover-left .swiper-button-prev {
   opacity: 0.8;
+  visibility: visible;
 }
 
-/* 왼쪽(이전) 버튼 */
-.custom-swiper-button-prev {
-  left: 20px;
+/* 마우스가 오른쪽에 있을 때 오른쪽 버튼만 보이도록 설정 */
+.swiper-container.hover-right .swiper-button-next {
+  opacity: 0.8;
+  visibility: visible;
 }
 
-/* 오른쪽(다음) 버튼 */
-.custom-swiper-button-next {
-  right: 20px;
-}
-
-/* 커스텀 네비게이션 버튼 스타일 */
-.custom-swiper-button-prev,
-.custom-swiper-button-next {
+/* 버튼이 가시화될 때의 스타일 설정 */
+.swiper-button-next,
+.swiper-button-prev {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,16 +85,12 @@
   transform: translateY(-50%);
   z-index: 10;
   cursor: pointer;
-  opacity: 0; /* 기본 상태에서 투명도 0으로 설정 */
-  transition: opacity 0.3s ease;
 }
 
-/* 마우스가 왼쪽에 있을 때 왼쪽 버튼만 보이도록 설정 */
-.swiper-container.hover-left .custom-swiper-button-prev {
-  opacity: 1;
+.swiper-button-prev {
+  left: 40px;
 }
 
-/* 마우스가 오른쪽에 있을 때 오른쪽 버튼만 보이도록 설정 */
-.swiper-container.hover-right .custom-swiper-button-next {
-  opacity: 1;
+.swiper-button-next {
+  right: 40px;
 }

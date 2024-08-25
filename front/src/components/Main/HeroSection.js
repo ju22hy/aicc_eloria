@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slide1 from "../SlideImage/Slide1.jpg";
 import Slide2 from "../SlideImage/Slide5.jpg";
 import Slide3 from "../SlideImage/Slide4.jpg";
 
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-// import required modules
+// Import required Swiper modules
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
@@ -17,22 +14,32 @@ import "swiper/css/navigation";
 import "./herosection.css";
 
 const HeroSection = () => {
+  // Swiper 인스턴스를 저장하기 위한 useRef
+  const swiperRef = useRef(null);
+
   // 현재 마우스가 왼쪽이나 오른쪽에 있는지 저장
   const [hoverSide, setHoverSide] = useState("");
 
-  //마우스가 버튼 위에 있을 때 함수 호출
+  useEffect(() => {
+    // Swiper 인스턴스를 가져와서 네비게이션 업데이트
+    if (swiperRef.current) {
+      swiperRef.current.swiper.navigation.update();
+    }
+  }, []);
+
+  // 마우스가 버튼 위에 있을 때 함수 호출
   const handleMouseEnter = (side) => {
     setHoverSide(side);
   };
 
-  //마우스가 버튼 밖에 있을 때 함수
+  // 마우스가 버튼 밖에 있을 때 함수
   const handleMouseLeave = () => {
-    setHoverSide(""); //상태 초기화 버튼 숨기기
+    setHoverSide(""); // 상태 초기화 버튼 숨기기
   };
 
   return (
     <div
-      //클래스 이름을 상태에 따라 동적으로 변경
+      // 클래스 이름을 상태에 따라 동적으로 변경
       className={`swiper-container ${
         hoverSide === "left"
           ? "hover-left"
@@ -40,9 +47,9 @@ const HeroSection = () => {
           ? "hover-right"
           : ""
       }`}
-      //마우스 움직임 이벤트 핸들러
+      // 마우스 움직임 이벤트 핸들러
       onMouseMove={(e) => {
-        const { clientX } = e; //마우스 x좌표
+        const { clientX } = e; // 마우스 x 좌표
         const { offsetWidth, offsetLeft } = e.currentTarget; // 컨테이너의 너비와 왼쪽 오프셋을 가져옴
         const center = offsetWidth / 2; // 컨테이너의 중앙 x 좌표를 계산
 
@@ -58,6 +65,7 @@ const HeroSection = () => {
       onMouseLeave={handleMouseLeave}
     >
       <Swiper
+        ref={swiperRef}
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
         autoplay={{
@@ -82,22 +90,6 @@ const HeroSection = () => {
           <img src={Slide2} alt="img3" />
         </SwiperSlide>
       </Swiper>
-
-      <div
-        className="custom-swiper-button-prev"
-        onMouseEnter={() => handleMouseEnter("left")} // 마우스가 버튼 위로 올라왔을 때 상태를 'left'로 설정
-        onMouseLeave={handleMouseLeave} // 마우스가 버튼에서 벗어났을 때 상태 초기화
-      >
-        <IoIosArrowBack />
-      </div>
-
-      <div
-        className="custom-swiper-button-next"
-        onMouseEnter={() => handleMouseEnter("right")}
-        onMouseLeave={handleMouseLeave}
-      >
-        <IoIosArrowForward />
-      </div>
     </div>
   );
 };
