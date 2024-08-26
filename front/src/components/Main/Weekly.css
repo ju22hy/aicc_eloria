@@ -1,39 +1,94 @@
-.weekly_container {
-  width: 100%;
-  padding: 80px;
-  margin: 0 auto;
-}
-
-.weekly_best {
-  width: 100%;
-  padding: 0;
-  color: #777;
-}
-
-.weekly_banners {
+.section-top {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 50px;
+  justify-content: center;
+  height: 250px;
+  background-color: lightgray;
 }
 
-h1 {
-  margin-bottom: 10px;
+.section-left {
+  padding: 80px;
+  display: flex;
+  flex: 0.6;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 1px solid black; */
 }
 
-.best_items {
+.section-right {
+  display: flex;
+  flex: 0.4;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+
+.section-right-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지를 비율을 유지하면서 div를 꽉 채움 */
+}
+
+.section-weekly {
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  align-items: center;
+  position: relative;
+  padding: 15px 1px 30px 1px;
+  /* border: 1px solid black; */
 }
 
-.item_center {
+.product-item {
+  /* background-color: #fff; */
+  border-radius: 8px;
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
 
-.item_right {
-  width: 30%;
-  height: 200px;
+.product-left {
+  flex: 2.5;
+  height: 450px;
 }
 
-.item_large {
-  width: 60%;
-  height: 400px;
+.product-center {
+  flex: 5;
+}
+
+.product-right {
+  flex: 2.5;
+  height: 450px;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지를 비율을 유지하면서 div를 꽉 채움 */
+}
+
+.product-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  color: white;
+  bottom: 0;
+  left: 5px;
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  padding: 5px 0;
+}
+
+.product-item p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 5px;
+  text-align: left;
 }

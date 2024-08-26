@@ -3,21 +3,35 @@ import "./Weekly.css";
 
 const WeeklySection = () => {
   return (
-    <div class="weekly_container">
-      <section class="weekly_best">
-        <div class="weekly_banners">
-          <div class="best_img"></div>
+    <body>
+      <div class="section section-top">
+        <div class="section-left">
+          <h1>WEEKLY BEST</h1>
+          <h5>금주 베스트 셀러 상품</h5>
         </div>
+        <div class="section-right">
+          <img class="section-right-img" src="" alt="쇼핑몰 로고" />
+        </div>
+      </div>
 
-        <div class="best_items">
-          <div class="item_left">
-            왼쪽 이미지<a href=""></a>
-          </div>
-          <div class="item_center">메인 이미지</div>
-          <div class="item-right">오른쪽 이미지</div>
+      <div class="section-weekly">
+        <div class="product-item product-left">
+          <img class="product-img" src="" alt="상품 1" />
+          <h3>상품 1</h3>
+          <p>상품 설명 상품 설명 가격</p>
         </div>
-      </section>
-    </div>
+        <div class="product-item product-center">
+          <img class="product-img" src="" alt="상품 2" />
+          <h3>상품 2</h3>
+          <p>상품 설명 상품 설명 가격</p>
+        </div>
+        <div class="product-item product-right">
+          <img class="product-img" src="" alt="상품 3" />
+          <h3>상품 3</h3>
+          <p>상품 설명 상품 설명 가격</p>
+        </div>
+      </div>
+    </body>
   );
 };
 
