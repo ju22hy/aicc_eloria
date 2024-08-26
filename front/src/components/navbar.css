@@ -29,7 +29,7 @@ nav {
   display: flex;
   gap: 0 40px;
   font-size: 16px;
-  color: #bbbbbb;
+  color: #999;
 }
 
 /* 로고 가로 중앙 정렬 */
@@ -42,6 +42,6 @@ nav {
 }
 
 li:hover {
-  color: #222222;
+  color: #fff;
   cursor: pointer;
 }
