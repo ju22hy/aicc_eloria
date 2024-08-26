@@ -7,10 +7,11 @@ const WeeklySection = () => {
       <div class="section section-top">
         <div class="section-left">
           <h1>WEEKLY BEST</h1>
+          <br/>
           <h5>금주 베스트 셀러 상품</h5>
         </div>
         <div class="section-right">
-          <img class="section-right-img" src="" alt="쇼핑몰 로고" />
+          <img class="section-right-img" src="" alt="베스트 상품" />
         </div>
       </div>
 
