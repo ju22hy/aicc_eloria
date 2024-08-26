@@ -1,8 +1,12 @@
+const bcrypt = require('bcrypt');
+const database = require('../database/database');
+
 async function login(req, res) {
+  const { email, password } = req.body;
   try {
     // 데이터베이스에서 사용자 조회
-    const result = await pool.query(
-      'SELECT * FROM aicc_5team WHERE email = $email',
+    const result = await database.query(
+      'SELECT * FROM aicc_5team WHERE email = $1',
       [email]
     );
     const user = result.rows[0];

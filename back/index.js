@@ -15,6 +15,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(require('./routes/postRoutes'));
+// Correct routes
+app.use('/basket', require('./routes/basketroutes'));
+app.use('/login', require('./routes/loginroutes'));
+app.use('/signup', require('./routes/signUproutes'));
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`)); // 서버 실행 시 메시지

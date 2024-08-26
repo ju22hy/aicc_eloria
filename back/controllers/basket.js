@@ -1,7 +1,10 @@
+const database = require('../database/database');
+
 async function checkBasket(req, res) {
+  const { user_key } = req.body;
   try {
-    const result = await pool.query(
-      'SELECT * FROM aicc_5team WHERE user_key = $user_key',
+    const result = await database.query(
+      'SELECT * FROM aicc_5team WHERE user_key = $1',
       [user_key]
     );
 
@@ -12,6 +15,7 @@ async function checkBasket(req, res) {
       });
     }
   } catch (error) {
+    console.error('Error during basket check:', error);
     res.status(500).json({ message: '서버 오류가 발생했습니다.' });
   }
 }

@@ -1,22 +1,8 @@
-const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const session = require('express-session');
-const app = express();
+const pool = require('../database/database');
 
-// 세션 설정
-app.use(
-  session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-// Passport 초기화
-app.use(passport.initialize());
-app.use(passport.session());
-
+// Passport 설정
 passport.use(
   new GoogleStrategy(
     {
@@ -31,18 +17,11 @@ passport.use(
         const profilePhoto = photos[0].value;
 
         const results = await pool.query(
-          'INSERT INTO aicc_5team (user_key, nickname, email, password, phone_number) VALUES ($user_key, $nickname, $email, $password, $phone_number) RETURNING *',
-          [NULL, NULL, email, NULL, NULL]
-          // [id, displayName, email, profilePhoto]
+          'INSERT INTO aicc_5team (user_key, nickname, email, password, phone_number) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+          [id, displayName, email, null, null]
         );
-        const users = results.rows[0];
-
-        res.status(201).json({
-          id: users.id,
-          displayName: users.displayName,
-          email: users.email,
-          profilePhoto: users.profilePhoto,
-        });
+        const user = results.rows[0];
+        return done(null, user);
       } catch (err) {
         return done(err, null);
       }
@@ -50,12 +29,16 @@ passport.use(
   )
 );
 
-// 라우트 설정
-app.get('/', (req, res) => {
-  res.send('<a href="/auth/google"></a>');
-});
+// 라우트 함수 설정
+function googleLoginRoutes(app) {
+  app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+  
+  app.get('/auth/google/callback', 
+    passport.authenticate('google', { failureRedirect: '/' }),
+    (req, res) => {
+      res.redirect('/'); // 로그인 성공 후 리디렉션할 경로
+    }
+  );
+}
 
-app.get(
-  '/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-);
+module.exports = googleLoginRoutes;
