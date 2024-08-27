@@ -14,11 +14,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App relative">
-        {/* <div className="bg-red-800 w-1/2 h-64 absolute">
-          <p className="text-right text-white font-semibold text-3xl">
-            TESTTEST
-          </p>
-        </div> */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
