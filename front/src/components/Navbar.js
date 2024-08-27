@@ -15,7 +15,7 @@ const Navbar = () => {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsDark(scrollY > 300);
+      setIsDark(scrollY > 600); //높이 수정 가능
     };
 
     window.addEventListener("scroll", handleScroll);
