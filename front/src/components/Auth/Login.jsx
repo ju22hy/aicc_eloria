@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./login.css";
 
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
 
@@ -14,13 +14,13 @@ function Login() {
     const newErrors = {};
 
     if (!email) {
-      newErrors.email = '이메일을 입력해주세요.';
+      newErrors.email = "이메일을 입력해주세요.";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = '유효한 이메일 주소를 입력해주세요.';
+      newErrors.email = "유효한 이메일 주소를 입력해주세요.";
     }
 
     if (!password) {
-      newErrors.password = '비밀번호를 입력해주세요.';
+      newErrors.password = "비밀번호를 입력해주세요.";
     }
 
     return newErrors;
@@ -31,11 +31,11 @@ function Login() {
     const newErrors = validate();
     if (Object.keys(newErrors).length === 0) {
       try {
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch("http://localhost:8080/login", {
           // 백엔드 로그인 엔드포인트
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email, password }), // 요청 바디에 이메일과 비밀번호 포함
         });
@@ -44,30 +44,30 @@ function Login() {
 
         if (response.ok) {
           // 로그인 성공 시 처리
-          console.log('로그인 성공:', data);
+          console.log("로그인 성공:", data);
           // 예: 토큰 저장, 사용자 정보 저장 등
           // 이후 페이지 이동
-          navigate('/');
+          navigate("/");
         } else {
           // 로그인 실패 시 처리
-          if (data.error === 'User not found') {
-            alert('존재하지 않는 아이디입니다.');
+          if (data.error === "User not found") {
+            alert("존재하지 않는 아이디입니다.");
 
-            const signUp = window.confirm('회원가입을 하시겠습니까?');
+            const signUp = window.confirm("회원가입을 하시겠습니까?");
             if (signUp) {
-              navigate('/joininfo');
+              navigate("/joininfo");
             } else {
-              navigate('/');
+              navigate("/");
             }
-          } else if (data.error === 'Invalid password') {
-            alert('비밀번호가 잘못되었습니다.');
+          } else if (data.error === "Invalid password") {
+            alert("비밀번호가 잘못되었습니다.");
           } else {
-            alert('로그인에 실패했습니다.');
+            alert("로그인에 실패했습니다.");
           }
         }
       } catch (error) {
-        console.error('로그인 요청 중 오류 발생:', error);
-        alert('서버와의 연결에 문제가 발생했습니다.');
+        console.error("로그인 요청 중 오류 발생:", error);
+        alert("서버와의 연결에 문제가 발생했습니다.");
       }
     } else {
       setErrors(newErrors);
@@ -75,11 +75,11 @@ function Login() {
   };
 
   const handleSignUp = () => {
-    navigate('/joininfo'); // 회원가입 페이지로 이동
+    navigate("/joininfo"); // 회원가입 페이지로 이동
   };
 
   const handleGoogleSignUp = () => {
-    navigate('/googleinfo'); // 구글 연동 회원가입 페이지로 이동
+    navigate("/googleinfo"); // 구글 연동 회원가입 페이지로 이동
   };
 
   return (
