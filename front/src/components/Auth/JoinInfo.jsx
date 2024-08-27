@@ -13,6 +13,7 @@ function JoinInfo() {
   const navigate = useNavigate(); //navigate 함수 초기화
 
   const validate = () => {
+    //폼의 입력 값들이 유효한지 검사, 유효성 검사 결과를 담은 객체 반환
     const newErrors = {};
 
     if (!nickname) {
@@ -44,19 +45,19 @@ function JoinInfo() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const newErrors = validate();
+    event.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
+    const newErrors = validate(); // 유효성 검사 수행
     if (Object.keys(newErrors).length === 0) {
       fetch("http://localhost:8080/signup", {
-        method: "POST",
+        method: "POST", // HTTP 메서드 설정
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json", // 데이터 타입 설정
         },
         body: JSON.stringify({
-          nickname,
+          nickname, // 사용자 입력 데이터
           email,
           password,
-          phone_number: contact, // 여기서 contact을 phone_number로 전달
+          phone_number: contact, // 여기서 contact을 서버에서 예상하는 필드 이름(phone_number)으로 전달
         }),
       })
         .then((response) => {
@@ -73,7 +74,7 @@ function JoinInfo() {
         })
         .catch((error) => {
           console.error("회원가입 에러:", error);
-          // 에러 처리 로직 (예: 에러 메시지 표시)
+          // 에러 처리 로직
           alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
         });
     } else {
