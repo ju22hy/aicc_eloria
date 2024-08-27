@@ -55,7 +55,7 @@ function SignUpForm() {
     <div className="form-container">
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>닉네임:</label>
+          <label>닉네임</label>
           <input
             type="text"
             value={nickname}
@@ -65,7 +65,7 @@ function SignUpForm() {
         </div>
 
         <div className="form-group">
-          <label>이메일:</label>
+          <label>이메일</label>
           <input
             type="email"
             value={email}
@@ -75,7 +75,7 @@ function SignUpForm() {
         </div>
 
         <div className="form-group">
-          <label>비밀번호:</label>
+          <label>비밀번호</label>
           <input
             type="password"
             value={password}
@@ -85,7 +85,7 @@ function SignUpForm() {
         </div>
 
         <div className="form-group">
-          <label>비밀번호 확인:</label>
+          <label>비밀번호 확인</label>
           <input
             type="password"
             value={confirmPassword}
@@ -97,7 +97,7 @@ function SignUpForm() {
         </div>
 
         <div className="form-group">
-          <label>연락처:</label>
+          <label>연락처</label>
           <input
             type="text"
             value={contact}
