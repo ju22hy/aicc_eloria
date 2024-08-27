@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Product from "./components/Product/Product";
 import Login from "./components/Auth/Login";
 import JoinInfo from "./components/Auth/JoinInfo";
+import GoogleJoin from "./components/Auth/GoogleJoin";
 import Cart from "./components/Mypage/Cart";
 import MyPage from "./components/Mypage/MyPage";
 import Footer from "./components/Footer";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/category2" element={<Product />} />
           <Route path="/login" element={<Login />} />
           <Route path="/joininfo" element={<JoinInfo />} />
+          <Route path="/googleinfo" element={<GoogleJoin />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/mypage" element={<MyPage />} />
 
