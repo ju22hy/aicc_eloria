@@ -47,7 +47,7 @@ const Navbar = () => {
           >
             <span className="text-4xl font-extrabold">
               <a href="/" className="logo-text">
-                Eloria
+                ELORIA
               </a>
             </span>
           </div>
