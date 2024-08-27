@@ -1,4 +1,34 @@
-.section celeb-section {
+.celeb-section {
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
   border: 1px solid black;
-  height: 200px;
+}
+
+.title {
+  text-align: left;
+  padding: 50px;
+  background-color: lightgray;
+}
+
+.title h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.celeb-images {
+  width: 100%;
+  background-color: #fff;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.celeb-images img {
+  border: 1px solid black;
+  object-fit: cover;
+  text-align: center;
+}
+
+.celeb-images p {
 }
