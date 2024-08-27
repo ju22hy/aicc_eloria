@@ -1,8 +1,6 @@
 .celeb-section {
-  /* margin-top: 10px; */
   width: 100%;
   height: 100%;
-  border: 1px solid black;
 }
 
 .title {
@@ -25,31 +23,55 @@
 }
 
 .celeb-img {
-  border: 1px solid black;
+  position: relative;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
 .celeb-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.3s ease-in-out;
+}
+
+.celeb-img h2,
+.celeb-img p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: white;
 }
 
 .celeb-img h2 {
-  position: absolute;
+  top: 40%;
   font-size: 34px;
-  color: #fff;
-  margin-bottom: 50px;
 }
 
-.celeb-img p {
-  position: absolute;
+.text {
+  top: 50%;
   font-size: 16px;
-  color: #fff;
-  margin-top: 50px;
+}
+
+.price {
+  top: 70%;
+  font-size: 14px;
+}
+
+.celeb-img.hover img {
+  filter: brightness(0.5); /* 이미지 어둡게 */
+}
+
+.celeb-img.hover h2,
+.celeb-img.hover p {
+  opacity: 1; /* 텍스트가 보이게 */
 }
