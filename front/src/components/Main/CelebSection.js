@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import $ from "jquery"; // jQuery 임포트
-import "./Celeb.css";
-import Weekly1 from "../Weekly_image_sample/weekly-image.jpg";
-import Weekly2 from "../Weekly_image_sample/weeklyimg_ring1.jpg";
+import React, { useEffect } from 'react';
+import $ from 'jquery'; // jQuery 임포트
+import './Celeb.css';
+import Weekly1 from '../Weekly_image_sample/weekly-image.jpg';
+import Weekly2 from '../Weekly_image_sample/weeklyimg_ring1.jpg';
 
 const CelebSection = () => {
   useEffect(() => {
     // jQuery를 사용하여 .celeb-img에 마우스 효과 추가
-    $(".celeb-img").hover(
+    $('.celeb-img').hover(
       function () {
-        $(this).addClass("hover");
+        $(this).addClass('hover');
       },
       function () {
-        $(this).removeClass("hover");
+        $(this).removeClass('hover');
       }
     );
   }, []);
