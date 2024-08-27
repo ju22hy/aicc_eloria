@@ -25,7 +25,7 @@
 }
 
 .celeb-images img {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   object-fit: cover;
   text-align: center;
 }
