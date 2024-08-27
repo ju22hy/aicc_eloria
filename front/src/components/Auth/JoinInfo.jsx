@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import "./joininfo.css";
+import React, { useState } from 'react';
+import './joininfo.css';
 
 function SignUpForm() {
-  const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [contact, setContact] = useState("");
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [contact, setContact] = useState('');
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const newErrors = {};
 
     if (!nickname) {
-      newErrors.nickname = "닉네임을 입력해주세요.";
+      newErrors.nickname = '닉네임을 입력해주세요.';
     }
 
     if (!email) {
-      newErrors.email = "이메일을 입력해주세요.";
+      newErrors.email = '이메일을 입력해주세요.';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "유효한 이메일 주소를 입력해주세요.";
+      newErrors.email = '유효한 이메일 주소를 입력해주세요.';
     }
 
     if (!password) {
-      newErrors.password = "비밀번호를 입력해주세요.";
+      newErrors.password = '비밀번호를 입력해주세요.';
     }
 
     if (password !== confirmPassword) {
-      newErrors.confirmPassword = "비밀번호가 일치하지 않습니다.";
+      newErrors.confirmPassword = '비밀번호가 일치하지 않습니다.';
     }
 
     if (!contact) {
-      newErrors.contact = "연락처를 입력해주세요.";
+      newErrors.contact = '연락처를 입력해주세요.';
     } else if (!/^\d{10,11}$/.test(contact)) {
       newErrors.contact =
-        "유효한 연락처를 입력해주세요. (10자리 또는 11자리 숫자)";
+        '유효한 연락처를 입력해주세요. (10자리 또는 11자리 숫자)';
     }
 
     return newErrors;
@@ -43,9 +43,30 @@ function SignUpForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newErrors = validate();
+
     if (Object.keys(newErrors).length === 0) {
-      // 유효성 검사 통과 시 처리 로직
-      console.log("회원가입 성공:", { nickname, email, password, contact });
+      // 유효성 검사 통과 시 백엔드로 데이터 전송
+      fetch('http://localhost:8080/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nickname,
+          email,
+          password,
+          phone_number: contact, // contact을 phone_number로 전달
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('회원가입 성공:', data);
+          // 성공 시 처리 로직 추가 (예: 알림, 페이지 이동 등)
+        })
+        .catch((error) => {
+          console.error('회원가입 에러:', error);
+          // 에러 처리 로직 추가 (예: 사용자에게 에러 메시지 표시)
+        });
     } else {
       setErrors(newErrors);
     }
