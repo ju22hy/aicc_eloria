@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./joininfo.css";
 
-function SignUpForm() {
+function JoinInfo() {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,41 +67,44 @@ function SignUpForm() {
   };
 
   return (
-    <div className="form-wrapper">
-      <h2 className="page-title">JOIN</h2>
-      <div className="form-container">
+    <div className="join-wrapper">
+      <h2 className="join-title">JOIN</h2>
+      <div className="join-container">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="join-group">
             <label>닉네임</label>
             <input
               type="text"
               value={nickname}
+              placeholder="닉네임을 입력해주세요."
               onChange={(e) => setNickname(e.target.value)}
             />
             {errors.nickname && <p className="error">{errors.nickname}</p>}
           </div>
 
-          <div className="form-group">
+          <div className="join-group">
             <label>이메일</label>
             <input
               type="email"
               value={email}
+              placeholder="로그인 시 사용할 이메일을 입력해주세요."
               onChange={(e) => setEmail(e.target.value)}
             />
             {errors.email && <p className="error">{errors.email}</p>}
           </div>
 
-          <div className="form-group">
+          <div className="join-group">
             <label>비밀번호</label>
             <input
               type="password"
               value={password}
+              placeholder="비밀번호를 입력해주세요."
               onChange={(e) => setPassword(e.target.value)}
             />
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
 
-          <div className="form-group">
+          <div className="join-group">
             <label>비밀번호 확인</label>
             <input
               type="password"
@@ -113,11 +116,12 @@ function SignUpForm() {
             )}
           </div>
 
-          <div className="form-group">
+          <div className="join-group">
             <label>연락처</label>
             <input
               type="text"
               value={contact}
+              placeholder="'-' 없이 숫자만 입력해주세요."
               onChange={(e) => setContact(e.target.value)}
             />
             {errors.contact && <p className="error">{errors.contact}</p>}
@@ -130,4 +134,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default JoinInfo;
