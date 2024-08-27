@@ -3,9 +3,11 @@ import "./Celeb.css";
 
 const CelebSection = () => {
   return (
-    <div className="celeb-section">
-      <div className="title">
-        <h1>CELEB'S PICK</h1>
+    <section>
+      <div className="celeb-section">
+        <div className="title">
+          <h1>CELEB'S PICK</h1>
+        </div>
       </div>
 
       <div className="celeb-images">
@@ -26,7 +28,7 @@ const CelebSection = () => {
           <p>상품 설명 상품 설명</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
