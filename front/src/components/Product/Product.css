@@ -1,11 +1,12 @@
-.celeb-section {
+.product-section {
   width: 100%;
   height: 100%;
 }
 
-.title {
+.gender {
   text-align: left;
   padding: 50px;
+  background-color: lightgray;
 }
 
 .title h1 {
@@ -13,7 +14,7 @@
   font-weight: bold;
 }
 
-.celeb-images {
+.product-images {
   width: 100%;
   background-color: #fff;
   height: 600px;
@@ -21,7 +22,7 @@
   justify-content: space-between;
 }
 
-.celeb-img {
+.product-img {
   position: relative;
   text-align: center;
   flex: 1;
@@ -33,15 +34,15 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.celeb-img img {
+.product-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: filter 0.3s ease-in-out;
 }
 
-.celeb-img h2,
-.celeb-img p {
+.product-img h2,
+.product-img p {
   position: absolute;
   left: 0;
   right: 0;
@@ -51,7 +52,7 @@
   color: white;
 }
 
-.celeb-img h2 {
+.product-img h2 {
   top: 40%;
   font-size: 34px;
 }
@@ -64,13 +65,4 @@
 .price {
   top: 70%;
   font-size: 14px;
-}
-
-.celeb-img.hover img {
-  filter: brightness(0.5); /* 이미지 어둡게 */
-}
-
-.celeb-img.hover h2,
-.celeb-img.hover p {
-  opacity: 1; /* 텍스트가 보이게 */
 }
