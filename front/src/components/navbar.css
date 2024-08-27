@@ -1,3 +1,4 @@
+/* 기본 네비게이션 바 스타일 */
 nav {
   position: fixed;
   z-index: 999;
@@ -9,13 +10,15 @@ nav {
   backdrop-filter: blur(10px); /* 네비게이션 바 배경에 블러 효과 추가 */
 }
 
+/* 네비게이션 바 컨테이너 */
 .nav_container {
   width: 100%;
-  _max-width: 1200px; /* 필요한 경우 최대 너비를 설정 */
+  max-width: 1200px; /* 필요한 경우 최대 너비를 설정 */
   margin: 0 auto;
   padding: 0 80px;
 }
 
+/* 네비게이션 바 내부 정렬 */
 .nav_wrapper {
   display: flex;
   justify-content: space-between;
@@ -24,15 +27,16 @@ nav {
   width: 100%;
 }
 
+/* 네비게이션 바 왼쪽과 오른쪽 부분 */
 .nav_left,
 .nav_right {
   display: flex;
   gap: 0 40px;
   font-size: 16px;
-  color: #999;
+  color: #aeaeae; /* 기본 링크 색상 */
 }
 
-/* 로고 가로 중앙 정렬 */
+/* 로고 위치 및 정렬 */
 .nav_logo {
   position: absolute;
   left: 50%;
@@ -41,7 +45,43 @@ nav {
   align-items: center;
 }
 
-li:hover {
-  color: #fff;
-  cursor: pointer;
+/* 기본 로고 텍스트 색상 */
+.nav_logo.default .logo-text {
+  color: black; /* 기본 로고 텍스트 색상 (다른 페이지에서 사용) */
+}
+
+/* 메인 페이지에서 스크롤 시 로고 텍스트 색상 변경 */
+.home-nav .nav_logo.light .logo-text {
+  color: white; /* 스크롤 높이 300px 이하 */
+}
+
+.home-nav .nav_logo.dark .logo-text {
+  color: black; /* 스크롤 높이 300px 이상 */
+}
+
+/* 메인 페이지에서의 기본 링크 색상 */
+.home-nav .nav_left a,
+.home-nav .nav_right a {
+  color: #aeaeae; /* 기본 링크 색상 */
+}
+
+/* 메인 페이지에서 호버 시 링크 색상 */
+.home-nav .light-hover a:hover {
+  color: white; /* 호버 시 링크 색상 (스크롤 위치가 300px 이하일 때) */
+}
+
+.home-nav .dark-hover a:hover {
+  color: black; /* 호버 시 링크 색상 (스크롤 위치가 300px 이상일 때) */
+}
+
+/* 다른 페이지에서의 메뉴 호버 색상 */
+.other-nav .nav_left li:hover a,
+.other-nav .nav_right li:hover a {
+  color: black; /* 메뉴 호버 시 링크 색상 */
+}
+
+/* 기본 링크 색상 (다른 페이지에서) */
+.other-nav .nav_left a,
+.other-nav .nav_right a {
+  color: #aeaeae; /* 기본 링크 색상 */
 }
