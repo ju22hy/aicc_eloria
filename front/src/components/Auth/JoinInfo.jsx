@@ -43,9 +43,7 @@ function SignUpForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newErrors = validate();
-
     if (Object.keys(newErrors).length === 0) {
-      // 유효성 검사 통과 시 백엔드로 데이터 전송
       fetch('http://localhost:8080/signup', {
         method: 'POST',
         headers: {
@@ -55,18 +53,14 @@ function SignUpForm() {
           nickname,
           email,
           password,
-          phone_number: contact, // contact을 phone_number로 전달
+          phone_number: contact, // 여기서 contact을 phone_number로 전달
         }),
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.log('회원가입 성공:', data);
-          // 성공 시 처리 로직 추가 (예: 알림, 페이지 이동 등)
-        })
         .catch((error) => {
           console.error('회원가입 에러:', error);
-          // 에러 처리 로직 추가 (예: 사용자에게 에러 메시지 표시)
         });
+      // 유효성 검사 통과 시 처리 로직
     } else {
       setErrors(newErrors);
     }
