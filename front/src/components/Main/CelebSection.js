@@ -6,7 +6,6 @@ const CelebSection = () => {
     <div className="celeb-section">
       <div className="title">
         <h1>CELEB'S PICK</h1>
-        <p>test</p>
       </div>
 
       <div className="celeb-images">
