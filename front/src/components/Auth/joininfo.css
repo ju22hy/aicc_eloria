@@ -1,0 +1,6 @@
+.form-container {
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  min-height: 100vh; /* 화면 전체 높이를 사용하여 중앙에 배치 */
+}
