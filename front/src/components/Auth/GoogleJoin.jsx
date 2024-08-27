@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./joininfo.css";
 
 function JoinInfo() {
@@ -9,18 +10,20 @@ function JoinInfo() {
   const [contact, setContact] = useState("");
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate(); //navigate 함수 초기화
+
   const validate = () => {
     const newErrors = {};
 
-    if (!nickname) {
-      newErrors.nickname = "닉네임을 입력해주세요.";
-    }
+    // if (!nickname) {
+    //   newErrors.nickname = "닉네임을 입력해주세요.";
+    // }
 
-    if (!email) {
-      newErrors.email = "이메일을 입력해주세요.";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "유효한 이메일 주소를 입력해주세요.";
-    }
+    // if (!email) {
+    //   newErrors.email = "이메일을 입력해주세요.";
+    // } else if (!/\S+@\S+\.\S+/.test(email)) {
+    //   newErrors.email = "유효한 이메일 주소를 입력해주세요.";
+    // }
 
     if (!password) {
       newErrors.password = "비밀번호를 입력해주세요.";
@@ -56,11 +59,23 @@ function JoinInfo() {
           phone_number: contact, // 여기서 contact을 phone_number로 전달
         }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("회원가입 실패");
+        })
+        .then((data) => {
+          // 회원가입 성공 시 처리 로직
+          console.log("회원가입 성공:", data);
+          alert("회원가입이 완료되었습니다! 로그인 페이지로 이동합니다."); // 성공 메시지
+          navigate("/login"); // 로그인 페이지로 이동
+        })
         .catch((error) => {
           console.error("회원가입 에러:", error);
+          // 에러 처리 로직 (예: 에러 메시지 표시)
+          alert("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
         });
-      // 유효성 검사 통과 시 처리 로직
     } else {
       setErrors(newErrors);
     }
@@ -71,7 +86,7 @@ function JoinInfo() {
       <h2 className="join-title">JOIN</h2>
       <div className="join-container">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <div className="join-group">
+          {/* <div className="join-group">
             <label>닉네임</label>
             <input
               type="text"
@@ -91,7 +106,7 @@ function JoinInfo() {
               onChange={(e) => setEmail(e.target.value)}
             />
             {errors.email && <p className="error">{errors.email}</p>}
-          </div>
+          </div> */}
 
           <div className="join-group">
             <label>비밀번호</label>
