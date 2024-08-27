@@ -1,4 +1,5 @@
 .section-top {
+  margin-top: 180px;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -19,15 +20,14 @@
   border: 1px solid black;
 }
 
-.section-left h1{
+.section-left h1 {
   font-size: 40px;
   font-weight: bolder;
 }
 
-.section-left h5{
+.section-left h5 {
   font-size: 15px;
 }
-
 
 .section-right {
   display: flex;
