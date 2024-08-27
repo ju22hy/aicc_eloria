@@ -1,3 +1,4 @@
+/* 기본 네비게이션 바 스타일 */
 nav {
   position: fixed;
   z-index: 999;
@@ -9,13 +10,15 @@ nav {
   backdrop-filter: blur(10px); /* 네비게이션 바 배경에 블러 효과 추가 */
 }
 
+/* 네비게이션 바 내부 컨테이너 */
 .nav_container {
   width: 100%;
-  _max-width: 1200px; /* 필요한 경우 최대 너비를 설정 */
+  max-width: 1200px; /* 필요한 경우 최대 너비를 설정 */
   margin: 0 auto;
   padding: 0 80px;
 }
 
+/* 네비게이션 바 래퍼 */
 .nav_wrapper {
   display: flex;
   justify-content: space-between;
@@ -24,6 +27,7 @@ nav {
   width: 100%;
 }
 
+/* 네비게이션 바 왼쪽 및 오른쪽 */
 .nav_left,
 .nav_right {
   display: flex;
@@ -41,6 +45,16 @@ nav {
   align-items: center;
 }
 
+/* 로고 텍스트 색상 변경(챗gpt 사용) */
+.nav_logo.light .logo-text {
+  color: white;
+}
+
+.nav_logo.dark .logo-text {
+  color: black;
+}
+
+/* 메뉴 항목 호버 효과 */
 li:hover {
   color: #fff;
   cursor: pointer;
