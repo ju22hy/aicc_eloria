@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import { login } from "../../redux/slices/authSlice";
+
 import "./login.css";
 
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+
+  axios.defaults.withCredentials = true;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -28,50 +42,74 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newErrors = validate();
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        const response = await fetch("http://localhost:8080/login", {
-          // 백엔드 로그인 엔드포인트
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }), // 요청 바디에 이메일과 비밀번호 포함
-        });
+    if (!values.email || !values.password) {
+      alert("누락된 입력값이 있습니다.");
+      return;
+    }
 
-        const data = await response.json();
-
-        if (response.ok) {
-          // 로그인 성공 시 처리
+    axios
+      .post("http://localhost:8080/login", values)
+      .then((res) => {
+        if (res.status === 201) {
+          // console.log(res);
           console.log("로그인 성공:", data);
-          // 예: 토큰 저장, 사용자 정보 저장 등
-          // 이후 페이지 이동
+          const decoded = jwtDecode(res.data.token);
+          // console.log(decoded);
+          dispatch(login({ authData: decoded }));
           navigate("/");
         } else {
-          // 로그인 실패 시 처리
-          if (data.error === "User not found") {
-            alert("존재하지 않는 아이디입니다.");
-
-            const signUp = window.confirm("회원가입을 하시겠습니까?");
-            if (signUp) {
-              navigate("/joininfo");
-            } else {
-              navigate("/");
-            }
-          } else if (data.error === "Invalid password") {
-            alert("비밀번호가 잘못되었습니다.");
-          } else {
-            alert("로그인에 실패했습니다.");
-          }
+          alert("로그인에 실패했습니다.");
         }
-      } catch (error) {
-        console.error("로그인 요청 중 오류 발생:", error);
-        alert("서버와의 연결에 문제가 발생했습니다.");
-      }
-    } else {
-      setErrors(newErrors);
-    }
+      })
+      .catch((error) => {
+        alert(error.response.data.message);
+      });
+  };
+
+    // const newErrors = validate();
+    // if (Object.keys(newErrors).length === 0) {
+    //   try {
+    //     const response = await fetch("http://localhost:8080/login", {
+    //       // 백엔드 로그인 엔드포인트
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ email, password }), // 요청 바디에 이메일과 비밀번호 포함
+    //     });
+
+    //     const data = await response.json();
+
+    //     if (response.ok) {
+    //       // 로그인 성공 시 처리
+    //       console.log("로그인 성공:", data);
+    //       // 예: 토큰 저장, 사용자 정보 저장 등
+    //       // 이후 페이지 이동
+    //       navigate("/");
+    //     } else {
+    //       // 로그인 실패 시 처리
+    //       if (data.error === "User not found") {
+    //         alert("존재하지 않는 아이디입니다.");
+
+    //         const signUp = window.confirm("회원가입을 하시겠습니까?");
+    //         if (signUp) {
+    //           navigate("/joininfo");
+    //         } else {
+    //           navigate("/");
+    //         }
+    //       } else if (data.error === "Invalid password") {
+    //         alert("비밀번호가 잘못되었습니다.");
+    //       } else {
+    //         alert("로그인에 실패했습니다.");
+    //       }
+    //     }
+    //   } catch (error) {
+    //     console.error("로그인 요청 중 오류 발생:", error);
+    //     alert("서버와의 연결에 문제가 발생했습니다.");
+    //   }
+    // } else {
+    //   setErrors(newErrors);
+    // }
   };
 
   const handleSignUp = () => {
