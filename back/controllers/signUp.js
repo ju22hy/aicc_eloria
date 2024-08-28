@@ -3,13 +3,13 @@ const bcrypt = require('bcrypt');
 const salt = 10;
 
 exports.signUp = async (req, res) => {
-  const { nickname, email, password, phone_number } = req.body;
+  const { nickname, email, password, contact } = req.body;
   const user_key = 'basket_key';
   try {
     //데이터베이스에서 같은 값 조회
     const sameUser = await database.query(
       'SELECT * FROM aicc_5team WHERE email = $1 OR nickname = $2 OR phone_number = $3',
-      [email, nickname, phone_number]
+      [email, nickname, contact]
     );
 
     if (sameUser.rows.length > 0) {
@@ -24,7 +24,7 @@ exports.signUp = async (req, res) => {
     // 데이터베이스에 사용자 정보 저장
     await database.query(
       'INSERT INTO aicc_5team (user_key, nickname, email, password, phone_number) VALUES ($1, $2, $3, $4, $5)',
-      [user_key, nickname, email, hashedPassword, phone_number]
+      [user_key, nickname, email, hashedPassword, contact]
     );
     return res.status(201).json({
       message: '회원가입 완료',

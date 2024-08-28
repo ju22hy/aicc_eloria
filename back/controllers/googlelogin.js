@@ -12,17 +12,17 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        const { id, displayName, emails, photos } = profile;
+        const { displayName, emails } = profile;
         const email = emails[0].value;
 
         const results = await pool.query(
           'INSERT INTO aicc_5team (user_key, nickname, email, password, phone_number) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-          [id, displayName, email, null, null]
+          [NULL, displayName, email, null, null]
         );
         const user = results.rows[0];
         return done(null, user);
       } catch (err) {
-        return done(err, null);
+        done(err, null);
       }
     }
   )

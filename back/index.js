@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const googleLoginRoutes = require('./controllers/googlelogin'); // Google 로그인 경로
@@ -22,6 +23,9 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(express.json());
+app.use(cookieParser());
 
 // Passport 초기화
 app.use(passport.initialize());
