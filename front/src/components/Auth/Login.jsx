@@ -9,22 +9,25 @@ import { login } from "../../redux/slices/authSlice";
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
   const dispatch = useDispatch();
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const validate = () => {
     const newErrors = {};
 
-    if (!email) {
+    if (!formData.email) {
       newErrors.email = "이메일을 입력해주세요.";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.password)) {
       newErrors.email = "유효한 이메일 주소를 입력해주세요.";
     }
 
-    if (!password) {
+    if (!formData.password) {
       newErrors.password = "비밀번호를 입력해주세요.";
     }
 
@@ -33,13 +36,13 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!formData.email || !formData.password) {
+      alert("잘못된 입력값이 있습니다.");
+      return;
+    }
+
     const newErrors = validate();
     setErrors(newErrors);
-
-    const formData = {
-      email,
-      password,
-    };
 
     axios
       .post("http://localhost:8080/login", formData)
@@ -75,9 +78,11 @@ function Login() {
           <div className="login-group">
             <input
               type="email"
-              value={email}
+              value={formData.email}
               placeholder="이메일"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
             {errors.email && <p className="error">{errors.email}</p>}
           </div>
@@ -85,9 +90,11 @@ function Login() {
           <div className="login-group">
             <input
               type="password"
-              value={password}
+              value={formData.password}
               placeholder="비밀번호"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
