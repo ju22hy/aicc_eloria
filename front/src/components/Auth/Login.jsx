@@ -4,7 +4,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import "./login.css";
-import { login } from "../../redux/slices/authSlice";
+import { login } from "./redux/slices/authSlice";
 
 import { FcGoogle } from "react-icons/fc";
 
@@ -45,13 +45,13 @@ function Login() {
       .post("http://localhost:8080/login", formData)
       .then((res) => {
         if (res.status === 201) {
-          // console.log(res);
+          console.log(res);
           const decoded = jwtDecode(res.data.token);
-          // console.log(decoded);
+          console.log(decoded);
           dispatch(login({ authData: decoded }));
           navigate("/");
         } else {
-          // alert('로그인에 실패했습니다.');
+          alert("로그인에 실패했습니다.");
         }
       })
       .catch((error) => {
