@@ -1,0 +1,12 @@
+.about-text {
+  height: 120px;
+  margin: 150px;
+  width: 100%;
+  padding: 0 80px;
+  max-width: 1200px;
+}
+
+.about-text p {
+  font-size: 32px;
+  font-weight: bolder;
+}

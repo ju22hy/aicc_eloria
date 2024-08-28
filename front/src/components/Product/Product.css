@@ -1,5 +1,7 @@
 .product-section {
+  display: flex;
   margin: 0 0 60px 0;
+  flex-direction: column;
 }
 
 .item-menu {
