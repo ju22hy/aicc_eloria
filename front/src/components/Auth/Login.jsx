@@ -9,6 +9,8 @@ import { login } from "../../redux/slices/authSlice";
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
   const dispatch = useDispatch();
@@ -21,13 +23,13 @@ function Login() {
   const validate = () => {
     const newErrors = {};
 
-    if (!formData.email) {
+    if (!email) {
       newErrors.email = "이메일을 입력해주세요.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.password)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "유효한 이메일 주소를 입력해주세요.";
     }
 
-    if (!formData.password) {
+    if (!password) {
       newErrors.password = "비밀번호를 입력해주세요.";
     }
 
@@ -67,7 +69,8 @@ function Login() {
   };
 
   const handleGoogleSignUp = () => {
-    navigate("/googleinfo"); // 구글 연동 회원가입 페이지로 이동
+    window.location.href = "http://localhost:8080/auth/google";
+    // navigate('/googleinfo'); // 구글 연동 회원가입 페이지로 이동
   };
 
   return (
