@@ -22,21 +22,21 @@ const WeeklySection = () => {
         <div className="section-weekly">
           <div class="best-item best-left">
             <img class="best-img" src={Weekly2} alt="상품 1" />
-            <h3>상품 1</h3>
-            <p class="description">상품설명 상품설명 상품설명</p>
-            <p class="price">KRW 12,345</p>
+            <h3>MUTE Stroke Cuff</h3>
+            <p class="description">볼드하지만 심플한 디자인</p>
+            <p class="price">KRW 235,000</p>
           </div>
           <div class="best-item best-center">
             <img class="best-img" src={Weekly3} alt="상품 2" />
-            <h3>상품 1</h3>
-            <p class="description">상품설명 상품설명 상품설명</p>
-            <p class="price">KRW 12,345</p>
+            <h3>SEASONS Black Chain Necklace</h3>
+            <p class="description">슬림한 블랙체인의 데일리 목걸이</p>
+            <p class="price">KRW 81,000</p>
           </div>
           <div class="best-item best-right">
             <img class="best-img" src={Weekly4} alt="상품 3" />
-            <h3>상품 1</h3>
-            <p class="description">상품설명 상품설명 상품설명</p>
-            <p class="price">KRW 12,345</p>
+            <h3>Braid Hoop Earrings</h3>
+            <p class="description">통통하게 볼륨있는 꼬임, 후프 이어링</p>
+            <p class="price">KRW 101,000</p>
           </div>
         </div>
       </div>
