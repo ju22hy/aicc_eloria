@@ -18,24 +18,26 @@ const WeeklySection = () => {
         </div>
       </div>
 
-      <div class="section-weekly">
-        <div class="best-item best-left">
-          <img class="best-img" src={Weekly2} alt="상품 1" />
-          <h3>상품 1</h3>
-          <p class="description">상품설명 상품설명 상품설명</p>
-          <p class="price">KRW 12,345</p>
-        </div>
-        <div class="best-item best-center">
-          <img class="best-img" src={Weekly3} alt="상품 2" />
-          <h3>상품 1</h3>
-          <p class="description">상품설명 상품설명 상품설명</p>
-          <p class="price">KRW 12,345</p>
-        </div>
-        <div class="best-item best-right">
-          <img class="best-img" src={Weekly4} alt="상품 3" />
-          <h3>상품 1</h3>
-          <p class="description">상품설명 상품설명 상품설명</p>
-          <p class="price">KRW 12,345</p>
+      <div class="weekly">
+        <div className="section-weekly">
+          <div class="best-item best-left">
+            <img class="best-img" src={Weekly2} alt="상품 1" />
+            <h3>상품 1</h3>
+            <p class="description">상품설명 상품설명 상품설명</p>
+            <p class="price">KRW 12,345</p>
+          </div>
+          <div class="best-item best-center">
+            <img class="best-img" src={Weekly3} alt="상품 2" />
+            <h3>상품 1</h3>
+            <p class="description">상품설명 상품설명 상품설명</p>
+            <p class="price">KRW 12,345</p>
+          </div>
+          <div class="best-item best-right">
+            <img class="best-img" src={Weekly4} alt="상품 3" />
+            <h3>상품 1</h3>
+            <p class="description">상품설명 상품설명 상품설명</p>
+            <p class="price">KRW 12,345</p>
+          </div>
         </div>
       </div>
     </section>
