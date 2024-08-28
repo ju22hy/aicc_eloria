@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 import './login.css';
+import { login } from './redux/slices/authSlice';
 
 import { FcGoogle } from 'react-icons/fc';
 
@@ -9,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
+  const dispatch = useDispatch();
 
   const validate = () => {
     const newErrors = {};
@@ -31,8 +36,13 @@ function Login() {
     const newErrors = validate();
     setErrors(newErrors);
 
+    const formData = {
+      email,
+      password,
+    };
+
     axios
-      .post('http://localhost:8080/login', values)
+      .post('http://localhost:8080/login', formData)
       .then((res) => {
         if (res.status === 201) {
           // console.log(res);
