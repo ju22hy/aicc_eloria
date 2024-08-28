@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import AboutImg from "../Weekly_image_sample/about.jpg";
 
 const About = () => {
   return (
@@ -11,11 +12,11 @@ const About = () => {
 
         <div className="about-img-wrapper">
           <div className="about-img">
-            <img src="./image" alt="대표 이미지" />
+            <img src={AboutImg} alt="대표 이미지" />
           </div>
           <div className="about-logo-text">
             <div className="about-logo">
-              <img src="./LOGO" alt="로고" />
+              <p>ELORIA</p>
             </div>
             <div className="logo-text">
               <p>
