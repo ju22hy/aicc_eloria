@@ -13,3 +13,8 @@ body {
   background-color: #f5f2f0;
   color: #333;
 }
+
+.small-icon {
+  width: 24px;
+  height: 24px;
+}
