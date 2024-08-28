@@ -4,6 +4,8 @@ import Weekly1 from "../Weekly_image_sample/top.jpg";
 import Weekly2 from "../Weekly_image_sample/weeklyimg_ring1.jpg";
 import Weekly3 from "../Weekly_image_sample/weeklyimg_neklace.jpg";
 import Weekly4 from "../Weekly_image_sample/right.jpg";
+import B from "../Weekly_image_sample/img-b.png";
+import I from "../Weekly_image_sample/img-i.png";
 
 const WeeklySection = () => {
   return (
@@ -19,6 +21,12 @@ const WeeklySection = () => {
       </div>
 
       <div class="weekly">
+        <div className="weekly-b">
+          <img src={B} alt="" />
+        </div>
+        <div className="weekly-i">
+          <img src={I} alt="" />
+        </div>
         <div className="section-weekly">
           <div class="best-item best-left">
             <img class="best-img" src={Weekly2} alt="상품 1" />
