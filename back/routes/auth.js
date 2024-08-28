@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('../controllers/google'); // Google Passport 설정 불러오기
+const passport = require('../controllers/google'); // Google Passport 설정 불러오기
 const bcrypt = require('bcrypt');
 const pool = require('../database/database');
 
