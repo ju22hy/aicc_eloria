@@ -1,9 +1,9 @@
 import React from "react";
 import "./Weekly.css";
-import Weekly1 from "../Weekly_image_sample/weekly-image.jpg";
+import Weekly1 from "../Weekly_image_sample/top.jpg";
 import Weekly2 from "../Weekly_image_sample/weeklyimg_ring1.jpg";
 import Weekly3 from "../Weekly_image_sample/weeklyimg_neklace.jpg";
-import Weekly4 from "../Weekly_image_sample/weeklyring_ring2.jpg";
+import Weekly4 from "../Weekly_image_sample/right.jpg";
 
 const WeeklySection = () => {
   return (
@@ -11,7 +11,6 @@ const WeeklySection = () => {
       <div class="section section-top">
         <div class="section-left">
           <h1>WEEKLY BEST</h1>
-          <br />
           <h5>금주 베스트 셀러 상품</h5>
         </div>
         <div class="section-right">
