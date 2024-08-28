@@ -15,6 +15,11 @@ function Login() {
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
   const dispatch = useDispatch();
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const validate = () => {
     const newErrors = {};
 
@@ -33,13 +38,13 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!formData.email || !formData.password) {
+      alert("잘못된 입력값이 있습니다.");
+      return;
+    }
+
     const newErrors = validate();
     setErrors(newErrors);
-
-    const formData = {
-      email,
-      password,
-    };
 
     axios
       .post("http://localhost:8080/login", formData)
@@ -64,7 +69,8 @@ function Login() {
   };
 
   const handleGoogleSignUp = () => {
-    navigate("/googleinfo"); // 구글 연동 회원가입 페이지로 이동
+    window.location.href = "http://localhost:8080/auth/google";
+    // navigate('/googleinfo'); // 구글 연동 회원가입 페이지로 이동
   };
 
   return (
@@ -75,9 +81,11 @@ function Login() {
           <div className="login-group">
             <input
               type="email"
-              value={email}
+              value={formData.email}
               placeholder="이메일"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
             {errors.email && <p className="error">{errors.email}</p>}
           </div>
@@ -85,9 +93,11 @@ function Login() {
           <div className="login-group">
             <input
               type="password"
-              value={password}
+              value={formData.password}
               placeholder="비밀번호"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
             {errors.password && <p className="error">{errors.password}</p>}
           </div>

@@ -1,8 +1,8 @@
 .celeb-section {
   margin-top: 200px;
-  padding-left: 40px;
   width: 100%;
   height: 100%;
+  padding-left: 80px;
 }
 
 .title {
@@ -29,6 +29,7 @@
   height: 620px;
   display: flex;
   justify-content: space-between;
+  padding: 0 40px;
 }
 
 .celeb-img {
