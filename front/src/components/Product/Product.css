@@ -1,5 +1,7 @@
 .product-section {
+  display: flex;
   margin: 0 0 60px 0;
+  flex-direction: column;
 }
 
 .item-menu {
@@ -45,7 +47,7 @@
 
 .product-images {
   width: 100%;
-  height: 550px;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;

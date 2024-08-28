@@ -13,7 +13,6 @@ nav {
 /* 네비게이션 바 컨테이너 */
 .nav_container {
   width: 100%;
-  max-width: 1200px; /* 필요한 경우 최대 너비를 설정 */
   margin: 0 auto;
   padding: 0 80px;
 }
