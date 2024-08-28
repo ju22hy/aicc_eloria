@@ -4,7 +4,6 @@
   width: 100%;
   justify-content: center;
   height: 250px;
-  background-color: #fff;
   border: none;
 }
 
@@ -14,7 +13,6 @@
   flex: 0.6;
   flex-direction: column;
   justify-content: center;
-  background-color: #ded3cd;
   _border: 1px solid black;
 }
 
