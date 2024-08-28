@@ -4,7 +4,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import "./login.css";
-import { login } from "./redux/slices/authSlice";
+import { login } from "../../redux/slices/authSlice";
 
 import { FcGoogle } from "react-icons/fc";
 
