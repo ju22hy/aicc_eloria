@@ -7,7 +7,7 @@ import Weekly4 from "../Weekly_image_sample/weeklyring_ring2.jpg";
 
 const WeeklySection = () => {
   return (
-    <body>
+    <section className="weekly-container">
       <div class="section section-top">
         <div class="section-left">
           <h1>WEEKLY BEST</h1>
@@ -20,26 +20,26 @@ const WeeklySection = () => {
       </div>
 
       <div class="section-weekly">
-        <div class="product-item product-left">
-          <img class="product-img" src={Weekly2} alt="상품 1" />
+        <div class="best-item best-left">
+          <img class="best-img" src={Weekly2} alt="상품 1" />
           <h3>상품 1</h3>
-          <p className="description">상품설명 상품설명 상품설명</p>
+          <p class="description">상품설명 상품설명 상품설명</p>
+          <p class="price">KRW 12,345</p>
         </div>
-        <div class="product-item product-center">
-          <img class="product-img" src={Weekly3} alt="상품 2" />
-          <h3>상품 2</h3>
-          <p className="description">
-            간단한 상품설명 상품설명상품설명 상품설명
-          </p>
-          <p className="price">KRW 12,345</p>
+        <div class="best-item best-center">
+          <img class="best-img" src={Weekly3} alt="상품 2" />
+          <h3>상품 1</h3>
+          <p class="description">상품설명 상품설명 상품설명</p>
+          <p class="price">KRW 12,345</p>
         </div>
-        <div class="product-item product-right">
-          <img class="product-img" src={Weekly4} alt="상품 3" />
-          <h3>상품 3</h3>
-          <p className="description">상품설명 상품설명</p>
+        <div class="best-item best-right">
+          <img class="best-img" src={Weekly4} alt="상품 3" />
+          <h3>상품 1</h3>
+          <p class="description">상품설명 상품설명 상품설명</p>
+          <p class="price">KRW 12,345</p>
         </div>
       </div>
-    </body>
+    </section>
   );
 };
 
