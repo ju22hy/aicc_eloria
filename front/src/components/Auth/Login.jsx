@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
-import { useDispatch } from "react-redux";
-import "./login.css";
-import { login } from "../../redux/slices/authSlice";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
+import './login.css';
+import { login } from '../../redux/slices/authSlice';
 
-import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from 'react-icons/fc';
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
   const dispatch = useDispatch();
@@ -19,13 +19,13 @@ function Login() {
     const newErrors = {};
 
     if (!email) {
-      newErrors.email = "이메일을 입력해주세요.";
+      newErrors.email = '이메일을 입력해주세요.';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "유효한 이메일 주소를 입력해주세요.";
+      newErrors.email = '유효한 이메일 주소를 입력해주세요.';
     }
 
     if (!password) {
-      newErrors.password = "비밀번호를 입력해주세요.";
+      newErrors.password = '비밀번호를 입력해주세요.';
     }
 
     return newErrors;
@@ -42,16 +42,16 @@ function Login() {
     };
 
     axios
-      .post("http://localhost:8080/login", formData)
+      .post('http://localhost:8080/login', formData)
       .then((res) => {
         if (res.status === 201) {
           console.log(res);
           const decoded = jwtDecode(res.data.token);
           console.log(decoded);
           dispatch(login({ authData: decoded }));
-          navigate("/");
+          navigate('/');
         } else {
-          alert("로그인에 실패했습니다.");
+          alert('로그인에 실패했습니다.');
         }
       })
       .catch((error) => {
@@ -60,11 +60,12 @@ function Login() {
   };
 
   const handleSignUp = () => {
-    navigate("/joininfo"); // 회원가입 페이지로 이동
+    navigate('/joininfo'); // 회원가입 페이지로 이동
   };
 
   const handleGoogleSignUp = () => {
-    navigate("/googleinfo"); // 구글 연동 회원가입 페이지로 이동
+    window.location.href = 'http://localhost:8080/auth/google';
+    // navigate('/googleinfo'); // 구글 연동 회원가입 페이지로 이동
   };
 
   return (

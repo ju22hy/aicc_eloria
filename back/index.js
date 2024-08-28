@@ -1,26 +1,26 @@
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const passport = require('passport');
-const googleLoginRoutes = require('./controllers/googlelogin'); // Google 로그인 경로
+const authRoutes = require('./routes/auth');
 
 const PORT = 8080;
 const app = express();
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-  })
-);
-
-// 세션 설정
+app.use(express.json());
 app.use(
   session({
     secret: process.env.GOOGLE_CLIENT_SECRET,
     resave: false,
     saveUninitialized: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
   })
 );
 
@@ -31,10 +31,8 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Google 로그인 라우트 설정
-googleLoginRoutes(app);
-
 // 기존 라우트 설정
+app.use('/auth', authRoutes); // 구글 라우트
 app.use('/basket', require('./routes/basketroutes'));
 app.use('/login', require('./routes/loginroutes'));
 app.use('/signup', require('./routes/signUproutes'));

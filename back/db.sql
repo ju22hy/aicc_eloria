@@ -22,7 +22,7 @@ SELECT * FROM task WHERE userId = 'ju22hy' ORDER BY created_at DESC(ASC);
 SELECT * FROM task WHERE userId = 'ju22hyhch'
 
 -- 데이터 삭제
-DELETE FROM task WHERE _id = '1234';
+DELETE FROM aicc_5team WHERE id = ;
 
 -- 데이터 업데이트
 UPDATE task SET iscompleted = true WHERE _id = '1235';
