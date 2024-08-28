@@ -25,18 +25,18 @@
 .about-img-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 0 180px;
-  gap: 40px;
+  padding: 0 80px;
+  gap: 90px;
   margin-top: 50px;
 }
 
 .about-img {
-  flex: 1.5;
+  flex: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
   /* background-color: #e0e0e0; */
-  height: 600px;
+  height: 550px;
 }
 
 .about-img img {
@@ -49,13 +49,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .about-logo {
   font-weight: 800;
   font-size: 40px;
-  margin-top: 120px;
+  margin-top: 50px;
 }
 
 .about-logo img {
@@ -67,4 +67,9 @@
 .logo-text {
   display: flex;
   align-items: center;
+  max-width: 85%;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  white-space: normal;
+  line-height: 1.9;
 }
