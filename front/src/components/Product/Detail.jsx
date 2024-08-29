@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./detail.css";
 import { LuPlus } from "react-icons/lu";
 import { LuMinus } from "react-icons/lu";
-import Detail1 from "./img/detail-img1.png";
-import Detail2 from "./img/detail-img2.png";
-import Detail3 from "./img/detail-img3.png";
+import Detail1 from "../SubImage/product-ring1.jpg";
+// import Detail2 from "./img/detail-img2.png";
+// import Detail3 from "./img/detail-img3.png";
 
 const Detail = () => {
   const [quantity, setQuantity] = useState(0);
@@ -41,8 +41,8 @@ const Detail = () => {
       <div className="image-container">
         <div className="image-gallery">
           <img src={Detail1} alt="제품 이미지" />
-          <img src={Detail2} alt="제품 추가 이미지 1" />
-          <img src={Detail3} alt="제품 추가 이미지 2" />
+          <img src={Detail1} alt="제품 추가 이미지 1" />
+          <img src={Detail1} alt="제품 추가 이미지 2" />
           <img src={Detail1} alt="제품 추가 이미지 3" />
         </div>
       </div>

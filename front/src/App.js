@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Main/Home";
 import About from "./components/About/About";
 import Product from "./components/Product/Product";
+import Detail from "./components/Product/Detail";
 import Login from "./components/Auth/Login";
 import JoinInfo from "./components/Auth/JoinInfo";
 import GoogleJoin from "./components/Auth/GoogleJoin";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/category1" element={<Product />} />
           <Route path="/category2" element={<Product />} />
+          <Route path="/detail" element={<Detail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/joininfo" element={<JoinInfo />} />
           <Route path="/googleinfo" element={<GoogleJoin />} />
