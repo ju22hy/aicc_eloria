@@ -61,7 +61,7 @@ const Navbar = () => {
               isHomePage ? (isDark ? "dark" : "light") : "default"
             }`}
           >
-            <span className="text-4xl font-extrabold">
+            <span>
               <a href="/" className="logo-text">
                 ELORIA
               </a>

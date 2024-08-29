@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="footer-container">
       <div className="footer-wrapper">
         <div className="footer-logo">
-          <span className="text-4xl font-extrabold">
+          <span>
             <a href="/" className="logo-text">
               ELORIA
             </a>
