@@ -28,7 +28,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
 
           {/* Default route to Home component */}
-          <Route path="/" element={<Navigate to="/home" />} />
+          {/* <Route path="/" element={<Navigate to="/home" />} /> */}
 
           {/* Catch all unmatched routes and redirect to Home */}
           <Route path="*" element={<Navigate to="/home" />} />

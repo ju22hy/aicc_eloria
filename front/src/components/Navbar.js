@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
-import { headerItems, navItems } from "../constants/data";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import { navItems, LoginItems, LogoutItems } from "../constants/data";
 import "./navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/slices/authSlice";
+// import { logout } from "../redux/slices/authSlice";
 
 const Navbar = () => {
+  const authData = useSelector((state) => state.auth.authData);
+  // console.log(authData);
+
+  const navigate = useNavigate();
+
   const [isDark, setIsDark] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -23,6 +31,14 @@ const Navbar = () => {
     // 컴포넌트 언마운트 시 이벤트 리스너 제거
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomePage]);
+
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <nav className={isHomePage ? "home-nav" : "other-nav"}>
@@ -52,16 +68,32 @@ const Navbar = () => {
             </span>
           </div>
           <ul className="nav_right">
-            {headerItems.map((item, idx) => (
-              <li
-                key={idx}
-                className={
-                  isHomePage ? (isDark ? "dark-hover" : "light-hover") : ""
-                }
-              >
-                <Link to={item.to}>{item.label}</Link>
-              </li>
-            ))}
+            {authData
+              ? LoginItems.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className={
+                      isHomePage ? (isDark ? "dark-hover" : "light-hover") : ""
+                    }
+                  >
+                    <Link
+                      to={item.to}
+                      onClick={item.index === 0 ? handleLogout : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))
+              : LogoutItems.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className={
+                      isHomePage ? (isDark ? "dark-hover" : "light-hover") : ""
+                    }
+                  >
+                    <Link to={item.to}>{item.label}</Link>
+                  </li>
+                ))}
           </ul>
         </div>
       </div>

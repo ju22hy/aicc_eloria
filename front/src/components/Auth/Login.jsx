@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-import { useDispatch } from 'react-redux';
-import './login.css';
-import { login } from '../../redux/slices/authSlice';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import { useDispatch } from "react-redux";
+import "./login.css";
+import { login } from "../../redux/slices/authSlice";
 
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate(); // 페이지 이동을 위해 useNavigate 사용
   const dispatch = useDispatch();
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const validate = () => {
     const newErrors = {};
 
-    if (!email) {
-      newErrors.email = '이메일을 입력해주세요.';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = '유효한 이메일 주소를 입력해주세요.';
+    if (!formData.email) {
+      newErrors.email = "이메일을 입력해주세요.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "유효한 이메일 주소를 입력해주세요.";
     }
 
-    if (!password) {
-      newErrors.password = '비밀번호를 입력해주세요.';
+    if (!formData.password) {
+      newErrors.password = "비밀번호를 입력해주세요.";
     }
 
     return newErrors;
@@ -33,25 +36,25 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!formData.email || !formData.password) {
+      alert("잘못된 입력값이 있습니다.");
+      return;
+    }
+
     const newErrors = validate();
     setErrors(newErrors);
 
-    const formData = {
-      email,
-      password,
-    };
-
     axios
-      .post('http://localhost:8080/login', formData)
+      .post("http://localhost:8080/login", formData)
       .then((res) => {
         if (res.status === 201) {
           console.log(res);
           const decoded = jwtDecode(res.data.token);
           console.log(decoded);
           dispatch(login({ authData: decoded }));
-          navigate('/');
+          navigate("/");
         } else {
-          alert('로그인에 실패했습니다.');
+          alert("로그인에 실패했습니다.");
         }
       })
       .catch((error) => {
@@ -60,12 +63,11 @@ function Login() {
   };
 
   const handleSignUp = () => {
-    navigate('/joininfo'); // 회원가입 페이지로 이동
+    navigate("/joininfo"); // 회원가입 페이지로 이동
   };
 
   const handleGoogleSignUp = () => {
-    window.location.href = 'http://localhost:8080/auth/google';
-    // navigate('/googleinfo'); // 구글 연동 회원가입 페이지로 이동
+    navigate("/googleinfo"); // 구글 연동 회원가입 페이지로 이동
   };
 
   return (
@@ -76,9 +78,11 @@ function Login() {
           <div className="login-group">
             <input
               type="email"
-              value={email}
+              value={formData.email}
               placeholder="이메일"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
             {errors.email && <p className="error">{errors.email}</p>}
           </div>
@@ -86,9 +90,11 @@ function Login() {
           <div className="login-group">
             <input
               type="password"
-              value={password}
+              value={formData.password}
               placeholder="비밀번호"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
             {errors.password && <p className="error">{errors.password}</p>}
           </div>
