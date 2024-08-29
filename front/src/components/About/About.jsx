@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about-wrapper">
-        <div className="about-text">
+        <div className="about-title">
           <p>ABOUT US</p>
         </div>
 
@@ -14,11 +14,11 @@ const About = () => {
           <div className="about-img">
             <img src={AboutImg} alt="대표 이미지" />
           </div>
-          <div className="about-logo-text">
-            <div className="about-logo">
+          <div>
+            <div className="logo-text">
               <p>ELORIA</p>
             </div>
-            <div className="logo-text">
+            <div className="about-text">
               <p>
                 Eloria는 당신의 일상을 더욱 빛나게 해줄 특별한 액세서리를
                 선보입니다.
