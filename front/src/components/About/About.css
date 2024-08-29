@@ -27,15 +27,15 @@
   padding: 0 80px;
   gap: 90px;
   margin-top: 50px;
+  align-items: center;
 }
 
 .about-img {
-  flex: 0.5;
+  flex: 0.75;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #e0e0e0; */
-  height: 550px;
+  height: 680px;
 }
 
 .about-img img {
@@ -64,8 +64,6 @@
 }
 
 .about-text {
-  display: flex;
-  align-items: center;
   max-width: 95%;
   overflow-wrap: break-word;
   word-break: keep-all;
