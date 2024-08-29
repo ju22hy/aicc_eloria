@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Crimson+Pro:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 /* 기본 네비게이션 바 스타일 */
 nav {
   position: fixed;
@@ -83,4 +85,13 @@ nav {
 .other-nav .nav_left a,
 .other-nav .nav_right a {
   color: #aeaeae; /* 기본 링크 색상 */
+}
+
+.logo-text {
+  font-family: "Crimson Pro", serif; /* Crimson Pro 폰트 적용 */
+  font-size: 48px;
+}
+
+.nav_wrapper > ul {
+  padding-top: 10px;
 }
