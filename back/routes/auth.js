@@ -12,8 +12,12 @@ router.post('/googleinfo', async (req, res) => {
 
     // 데이터베이스 업데이트
     await pool.query(
-      'UPDATE aicc_5team SET user_key = $1, password = $2, phone_number = $3 WHERE email = $4',
-      [user_key, hashedPassword, contact, email]
+      `INSERT INTO aicc_5team (user_key, nickname, email, password, phone_number) 
+       VALUES ($1, $2, $3, $4, $5)
+       ON CONFLICT (email) 
+       DO UPDATE SET user_key = EXCLUDED.user_key, password = EXCLUDED.password, phone_number = EXCLUDED.phone_number
+       RETURNING *`,
+      [user_key, null, email, hashedPassword, contact]
     );
 
     res.status(200).json({
