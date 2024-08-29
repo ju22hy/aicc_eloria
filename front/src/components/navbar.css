@@ -48,7 +48,7 @@ nav {
 
 /* 기본 로고 텍스트 색상 */
 .nav_logo.default .logo-text {
-  color: black; /* 기본 로고 텍스트 색상 (다른 페이지에서 사용) */
+  color: #222; /* 기본 로고 텍스트 색상 (다른 페이지에서 사용) */
 }
 
 /* 메인 페이지에서 스크롤 시 로고 텍스트 색상 변경 */
@@ -57,7 +57,7 @@ nav {
 }
 
 .home-nav .nav_logo.dark .logo-text {
-  color: black; /* 스크롤 높이 300px 이상 */
+  color: #222; /* 스크롤 높이 300px 이상 */
 }
 
 /* 메인 페이지에서의 기본 링크 색상 */
@@ -72,13 +72,13 @@ nav {
 }
 
 .home-nav .dark-hover a:hover {
-  color: black; /* 호버 시 링크 색상 (스크롤 위치가 300px 이상일 때) */
+  color: #222; /* 호버 시 링크 색상 (스크롤 위치가 300px 이상일 때) */
 }
 
 /* 다른 페이지에서의 메뉴 호버 색상 */
 .other-nav .nav_left li:hover a,
 .other-nav .nav_right li:hover a {
-  color: black; /* 메뉴 호버 시 링크 색상 */
+  color: #222; /* 메뉴 호버 시 링크 색상 */
 }
 
 /* 기본 링크 색상 (다른 페이지에서) */

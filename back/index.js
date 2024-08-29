@@ -4,18 +4,24 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const authRoutes = require('./routes/auth');
-
 const PORT = 8080;
 const app = express();
 
-app.use(express.json());
 app.use(
   session({
-    secret: process.env.GOOGLE_CLIENT_SECRET,
+    secret: 'process.env.SECRET_KEY',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: { secure: false, httpOnly: true, maxAge: 24 * 60 * 60 * 1000 },
   })
 );
+
+app.use((req, res, next) => {
+  next();
+});
+// Passport 초기화
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(
   cors({
@@ -27,12 +33,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// Passport 초기화
-app.use(passport.initialize());
-app.use(passport.session());
+app.use('/auth', authRoutes); // 구글 라우트
 
 // 기존 라우트 설정
-app.use('/auth', authRoutes); // 구글 라우트
 app.use('/basket', require('./routes/basketroutes'));
 app.use('/login', require('./routes/loginroutes'));
 app.use('/signup', require('./routes/signUproutes'));

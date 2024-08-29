@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import './joininfo.css';
 
@@ -10,6 +10,10 @@ function JoinInfo() {
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate(); //navigate 함수 초기화
+
+  const location = useLocation();
+  const param = new URLSearchParams(location.search);
+  const email = param.get('email');
 
   const validate = () => {
     const newErrors = {};
@@ -45,6 +49,7 @@ function JoinInfo() {
     const formData = {
       password,
       contact,
+      email,
     };
 
     axios
