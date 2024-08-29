@@ -10,7 +10,7 @@ export const LogoutItems = [
   { label: "LOGIN", to: "/login" },
   { label: "JOIN", to: "/joininfo" },
   { label: "CART", to: "/cart" },
-  { label: "MY PAGE", to: "/mypage" },
+  { label: "MY PAGE", to: "/" },
 ];
 
 export const LoginItems = [

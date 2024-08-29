@@ -25,7 +25,7 @@ function App() {
           <Route path="/joininfo" element={<JoinInfo />} />
           <Route path="/googleinfo" element={<GoogleJoin />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/" element={<MyPage />} />
 
           {/* Default route to Home component */}
           {/* <Route path="/" element={<Navigate to="/home" />} /> */}
