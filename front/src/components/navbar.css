@@ -88,8 +88,9 @@ nav {
 }
 
 .logo-text {
-  font-family: "Crimson Pro", serif; /* Crimson Pro 폰트 적용 */
+  font-family: "Crimson Pro", serif;
   font-size: 48px;
+  font-weight: 300;
 }
 
 .nav_wrapper > ul {
