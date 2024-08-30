@@ -1,0 +1,100 @@
+.cart-table {
+  margin-top: 40px;
+  width: calc(100% - 160px); /* 양옆 패딩 80px씩 빼기 */
+  margin-left: 80px; /* 왼쪽에 80px 패딩 추가 */
+  margin-right: 80px; /* 오른쪽에 80px 패딩 추가 */
+  border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+  border-bottom: 1px solid #aeaeae; /* 세로선 대신 하단에만 테두리 적용 */
+}
+
+.cart-table th {
+  text-align: center;
+  border-top: 1px solid #222;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px 0;
+  background-color: #e0dbd7;
+}
+
+.cart-table td {
+  padding: 12px 0;
+}
+
+/* 각 열의 너비 설정 */
+.cart-table th:nth-child(1), /* Checkbox */
+.cart-table td:nth-child(1) {
+  width: 104px;
+}
+
+.cart-table th:nth-child(1) {
+  text-align: center; /* 수평 중앙 정렬 */
+  vertical-align: middle; /* 수직 중앙 정렬 */
+}
+
+.cart-table th:nth-child(2), /* Product Name */
+.cart-table td:nth-child(2) {
+  width: 816px;
+}
+
+.cart-table th:nth-child(3), /* Quantity */
+.cart-table td:nth-child(3) {
+  width: 300px;
+}
+
+.cart-table th:nth-child(4), /* Total Price */
+.cart-table td:nth-child(4) {
+  width: 300px;
+}
+
+.cart-table th:nth-child(5), /* Action */
+.cart-table td:nth-child(5) {
+  width: 240px;
+}
+
+.checkbox-td {
+  width: 104px; /* 너비 설정 */
+  text-align: center; /* 수평 중앙 정렬 */
+  vertical-align: middle; /* 수직 중앙 정렬 */
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+}
+
+.product-info > img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  margin: 0 40px 0 20px;
+}
+
+.product-info > span {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.cart-table td button {
+  padding: 5px 10px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-total {
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-total-price {
+  width: 35%;
+  padding: 0 120px;
+  display: flex;
+  justify-content: space-between;
+}

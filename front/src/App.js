@@ -1,17 +1,17 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import Home from './components/Main/Home';
-import About from './components/About/About';
-import Product from './components/Product/Product';
-import Detail from './components/Product/Detail';
-import Login from './components/Auth/Login';
-import JoinInfo from './components/Auth/JoinInfo';
-import GoogleJoin from './components/Auth/GoogleJoin';
-import Cart from './components/Mypage/Cart';
-import MyPage from './components/Mypage/MyPage';
-import Footer from './components/Footer';
-import { RecoilRoot } from 'recoil';
+import Navbar from "./components/Navbar";
+import Home from "./components/Main/Home";
+import About from "./components/About/About";
+import Product from "./components/Product/Product";
+import Detail from "./components/Product/Detail";
+import Login from "./components/Auth/Login";
+import JoinInfo from "./components/Auth/JoinInfo";
+import GoogleJoin from "./components/Auth/GoogleJoin";
+import Cart from "./components/Mypage/Cart";
+import MyPage from "./components/Mypage/MyPage";
+import Footer from "./components/Footer";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
