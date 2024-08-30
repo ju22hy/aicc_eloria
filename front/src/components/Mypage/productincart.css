@@ -24,43 +24,38 @@
   padding: 12px 0;
 }
 
-/* 각 열의 너비 설정 */
-.cart-table th:nth-child(1), /* Checkbox */
+/* 각 열(td)의 너비 설정 */
+.cart-table th:nth-child(1), /* 체크박스 */
 .cart-table td:nth-child(1) {
   width: 104px;
 }
 
-.cart-table th:nth-child(1) {
-  text-align: center; /* 수평 중앙 정렬 */
-  vertical-align: middle; /* 수직 중앙 정렬 */
-}
-
-.cart-table th:nth-child(2), /* Product Name */
+.cart-table th:nth-child(2), /* 상품명 */
 .cart-table td:nth-child(2) {
   width: 816px;
 }
 
-.cart-table th:nth-child(3), /* Quantity */
+.cart-table th:nth-child(3), /* 수량변경 */
 .cart-table td:nth-child(3) {
   width: 300px;
 }
 
-.cart-table th:nth-child(4), /* Total Price */
+.cart-table th:nth-child(4), /* 결제금액 */
 .cart-table td:nth-child(4) {
   width: 300px;
 }
 
-.cart-table th:nth-child(5), /* Action */
+.cart-table th:nth-child(5), /* 선택 */
 .cart-table td:nth-child(5) {
   width: 240px;
 }
 
+/* 체크박스 td css */
 .checkbox-td {
-  width: 104px; /* 너비 설정 */
-  text-align: center; /* 수평 중앙 정렬 */
-  vertical-align: middle; /* 수직 중앙 정렬 */
+  text-align: center; /* 텍스트 수평 중앙 정렬 */
 }
 
+/* 상품명 td css */
 .product-info {
   display: flex;
   align-items: center;
@@ -78,8 +73,33 @@
   font-weight: 400;
 }
 
-.cart-table td button {
-  padding: 5px 10px;
+/* 수량변경 td css */
+.quantity-td {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-td > input {
+  width: 40px;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* 결제금액 td css */
+.price-td {
+  text-align: center;
+}
+
+.option-td {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-order {
+  width: 60%;
+  padding: 12px 20px;
   background-color: #f00;
   color: #fff;
   border: none;

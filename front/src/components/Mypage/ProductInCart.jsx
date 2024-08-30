@@ -109,32 +109,45 @@ const ProductInCart = () => {
                 <span>{product.name}</span>
               </td>
               <td>
-                <div className="quantity-input">
+                <div className="quantity-td">
                   <input
                     type="number"
                     value={product.quantity}
                     min="1"
                     readOnly
                   />
-                  <LuMinus
-                    className="minus-icon"
-                    onClick={() => handleDecreaseQuantity(product.id)}
-                  />
                   <LuPlus
                     className="plus-icon"
                     onClick={() => handleIncreaseQuantity(product.id)}
                   />
+                  <LuMinus
+                    className="minus-icon"
+                    onClick={() => handleDecreaseQuantity(product.id)}
+                  />
                 </div>
               </td>
-              <td>KRW {(product.price * product.quantity).toLocaleString()}</td>
+              <td className="price-td">
+                KRW {(product.price * product.quantity).toLocaleString()}
+              </td>
               <td>
-                <button
-                  onClick={() => {
-                    console.log(`${product.name} removed`);
-                  }}
-                >
-                  Remove
-                </button>
+                <div className="option-td">
+                  <button
+                    className="cart-delete"
+                    onClick={() => {
+                      console.log(`${product.name} removed`); //기능 현재는 없음 버튼 핸들러만 구현
+                    }}
+                  >
+                    삭제하기
+                  </button>
+                  <button
+                    className="cart-order"
+                    onClick={() => {
+                      console.log(`${product.name} removed`); //기능 현재는 없음 버튼 핸들러만 구현
+                    }}
+                  >
+                    주문하기
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
