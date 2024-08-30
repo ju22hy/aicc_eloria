@@ -82,4 +82,9 @@ VALUES ('SQUARE TANZ R. II', '6개의 작은 스퀘어 스톤이 세팅되어 �
 -각인과 골드도금은 각각 추가요금이 있습니다.
 ', '63,000', 'back/img/ring2.jpg');
 
+--이미지 추가
+ALTER TABLE Product
+ADD COLUMN ProductImage2 VARCHAR(255),
+ADD COLUMN ProductImage3 VARCHAR(255),
+ADD COLUMN ProductImage4 VARCHAR(255);
 

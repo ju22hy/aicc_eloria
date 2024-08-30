@@ -25,7 +25,7 @@ const Product = () => {
   // 필터링된 제품 목록 생성 (카테고리에 따라)
   const filteredProducts = products.filter((product) => {
     if (activeCategory === 'ALL') return true;
-    return product.productname.toUpperCase().includes(activeCategory);
+    return product.productcategory === activeCategory;
   });
 
   return (
@@ -74,12 +74,11 @@ const Product = () => {
       <div className="section product-images">
         {filteredProducts.map((product, index) => (
           <div key={index} className={`product-img ${index + 1}`}>
-            <a>
-              <img
-                src={`http://localhost:8080/img/${product.productimage}`}
-                alt={product.product_name}
-              />
-            </a>
+            <img
+              src={`http://localhost:8080/img/${product.productimage}`}
+              alt={product.product_name}
+            />
+
             <a href="" className="product-text">
               <h2>{product.productname}</h2>
               <p>KRW {product.productprice.toLocaleString()}</p>
