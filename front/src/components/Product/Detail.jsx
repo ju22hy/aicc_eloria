@@ -10,7 +10,7 @@ const Detail = () => {
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  const unitPrice = 12345; // 단가 설정
+  const unitPrice = 109000; // 단가 설정
 
   // 총 가격 계산 함수
   const calculateTotalPrice = () => {
@@ -31,8 +31,13 @@ const Detail = () => {
 
   // BUY NOW 버튼 클릭 핸들러
   const handleBuyNow = () => {
-    console.log("BUY NOW 버튼이 클릭되었습니다.");
-    navigate("/");
+    const userConfirmed = window.confirm(
+      "상품 구입이 완료되었습니다. 목록으로 이동하시겠습니까?"
+    );
+
+    if (userConfirmed) {
+      navigate("/category1");
+    }
   };
 
   // ADD TO CART 버튼 클릭 핸들러
@@ -84,7 +89,7 @@ const Detail = () => {
       </div>
       <div className="product-details" ref={staticRef}>
         <div className="details-text-container">
-          <h1 className="details-product-title">상품명상품명상품명</h1>
+          <h1 className="details-product-title">SQUARE TANZ R. II</h1>
           <p className="details-product-price">
             KRW {unitPrice.toLocaleString()}
           </p>
