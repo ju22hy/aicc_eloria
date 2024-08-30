@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import './Product.css';
+import React, { useEffect, useState } from "react";
+import "./Product.css";
 
 const Product = () => {
-  const [activeCategory, setActiveCategory] = useState('ALL');
+  const [activeCategory, setActiveCategory] = useState("ALL");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // 데이터 가져오기
-    fetch('http://localhost:8080/api/products')
+    fetch("http://localhost:8080/api/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
         console.log(data);
       })
       .catch((error) => {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       });
   }, []);
 
@@ -24,7 +24,7 @@ const Product = () => {
 
   // 필터링된 제품 목록 생성 (카테고리에 따라)
   const filteredProducts = products.filter((product) => {
-    if (activeCategory === 'ALL') return true;
+    if (activeCategory === "ALL") return true;
     return product.productcategory === activeCategory;
   });
 
@@ -37,33 +37,33 @@ const Product = () => {
         <div className="item-menu">
           <button
             className={`menu-button ${
-              activeCategory === 'ALL' ? 'active' : ''
+              activeCategory === "ALL" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('ALL')}
+            onClick={() => handleCategoryClick("ALL")}
           >
             ALL
           </button>
           <button
             className={`menu-button ${
-              activeCategory === 'RING' ? 'active' : ''
+              activeCategory === "RING" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('RING')}
+            onClick={() => handleCategoryClick("RING")}
           >
             RING
           </button>
           <button
             className={`menu-button ${
-              activeCategory === 'EARRING' ? 'active' : ''
+              activeCategory === "EARRING" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('EARRING')}
+            onClick={() => handleCategoryClick("EARRING")}
           >
             EARRING
           </button>
           <button
             className={`menu-button ${
-              activeCategory === 'BRACELET' ? 'active' : ''
+              activeCategory === "BRACELET" ? "active" : ""
             }`}
-            onClick={() => handleCategoryClick('BRACELET')}
+            onClick={() => handleCategoryClick("BRACELET")}
           >
             BRACELET
           </button>
