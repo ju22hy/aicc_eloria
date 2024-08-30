@@ -1,37 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './detail.css';
 import { LuPlus, LuMinus } from 'react-icons/lu';
-import Detail1 from '../SubImage/product-ring1.jpg';
-import { useNavigate } from 'react-router-dom';
-
-const Product = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    // 데이터 가져오기
-    fetch('http://localhost:8080/api/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching products:', error);
-      });
-  }, []);
-};
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Detail = () => {
   const stickyRef = useRef(null);
   const staticRef = useRef(null);
   const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
+  const { productid } = useParams();
 
   const [quantity, setQuantity] = useState(1);
-  const unitPrice = 109000; // 단가 설정
+
+  useEffect(() => {
+    // 데이터 가져오기
+    fetch(`http://localhost:8080/api/products/${productid}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setProduct(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
+  }, [productid]);
+  // console.log(product.productname);
 
   // 총 가격 계산 함수
   const calculateTotalPrice = () => {
-    return unitPrice * quantity;
+    const priceString = product?.productprice || '0';
+    const price = parseFloat(priceString.replace(/,/g, ''));
+    return price * quantity;
   };
 
   // 수량 증가 함수
@@ -96,30 +95,36 @@ const Detail = () => {
     };
   }, []);
 
+  if (!product) {
+    console.log(product);
+    return <div>Loading...</div>; // 데이터를 로드하는 동안 로딩 메시지를 표시
+  }
+
   return (
     <div className="detail-container">
       <div className="image-container" ref={stickyRef}>
         <div className="image-gallery">
           <img
             className="main-p-img"
-            src={`http://localhost:8080/img/back/img/ring1.jpg`}
+            src={`http://localhost:8080/img/${product.productimage}`}
             alt="메인 이미지"
           />
           <img
             className="concept-img"
-            src={`https://andezvous.com/web/upload/ANDEZVOUS/squaretanzR_II1.jpg`}
+            src={product.productimage2}
             alt="컨셉 이미지"
           />
         </div>
       </div>
       <div className="product-details" ref={staticRef}>
         <div className="details-text-container">
-          <h1 className="details-product-title">{/*상품명*/}</h1>
+          <h1 className="details-product-title">{product.productname}</h1>
           <p className="details-product-price">
-            KRW {/*가격*/}
-            {unitPrice.toLocaleString()}
+            KRW {product.productprice?.toLocaleString()}
           </p>
-          <p className="details-product-description">{/* 상품설명 */}</p>
+          <p className="details-product-description">
+            {product.productdescription}
+          </p>
           <div className="quantity-selector">
             <div className="quantity-input">
               <input

@@ -24,7 +24,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/category1" element={<Product />} />
             <Route path="/category2" element={<Product />} />
-            <Route path="/detail" element={<Detail />} />
+            <Route path="/product/:productid" element={<Detail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/joininfo" element={<JoinInfo />} />
             <Route path="/googleinfo" element={<GoogleJoin />} />
