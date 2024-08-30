@@ -88,3 +88,11 @@ ADD COLUMN ProductImage2 VARCHAR(255),
 ADD COLUMN ProductImage3 VARCHAR(255),
 ADD COLUMN ProductImage4 VARCHAR(255);
 
+--장바구니 테이블 추가
+CREATE TABLE basket (
+    id SERIAL PRIMARY KEY,           -- 장바구니 항목의 고유 식별자
+    email VARCHAR(255) NOT NULL,     -- 사용자 이메일, aicc_5team 테이블의 email과 연결
+    productid INTEGER NOT NULL,      -- 제품 고유 식별자, product 테이블의 productid와 연결
+    FOREIGN KEY (email) REFERENCES aicc_5team(email) ON DELETE CASCADE,
+    FOREIGN KEY (productid) REFERENCES product(productid) ON DELETE CASCADE
+);
