@@ -24,6 +24,14 @@
   padding: 12px 0;
 }
 
+/* 장바구니가 비었을 때 메시지 */
+.empty-cart-message {
+  text-align: center; /* 가운데 정렬 */
+  font-size: 18px; /* 폰트 크기 */
+  font-weight: 400; /* 폰트 두께 */
+  height: 180px;
+}
+
 /* 각 열(td)의 너비 설정 */
 .cart-table th:nth-child(1), /* 체크박스 */
 .cart-table td:nth-child(1) {
