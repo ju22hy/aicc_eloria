@@ -1,17 +1,17 @@
-import React from 'react';
-import './Completed.css';
-import gifticon from './img/gift-2-line.svg';
+import React from "react";
+import "./completed.css";
+import gifticon from "./img/gift-2-line.svg";
 
 const Completed = () => {
   return (
-    <div className='completed-container'>
-      <div className='completed-wrapper'>
-        <div className='icon-gift'>
-          <img src={gifticon} alt='아이콘' />
+    <div className="completed-container">
+      <div className="completed-wrapper">
+        <div className="icon-gift">
+          <img src={gifticon} alt="아이콘" />
         </div>
-        <div className='completed-text'>
+        <div className="completed-text">
           <p>상품 주문이 완료되었습니다.</p>
-          <div className='completed-textsub'>
+          <div className="completed-textsub">
             <p>
               상품 배송 준비중입니다. <br />
               상품 배송까지 최대 3일이 소요됩니다. <br />
@@ -20,8 +20,8 @@ const Completed = () => {
             </p>
           </div>
         </div>
-        <div className='completed-button'>
-          <button onClick={() => (window.location.href = '/')}>홈으로</button>
+        <div className="completed-button">
+          <button onClick={() => (window.location.href = "/")}>홈으로</button>
         </div>
       </div>
     </div>

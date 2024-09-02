@@ -12,6 +12,7 @@ import Cart from "./components/Mypage/Cart";
 import MyPage from "./components/Mypage/MyPage";
 import Footer from "./components/Footer";
 import { RecoilRoot } from "recoil";
+import Completed from "./components/Mypage/CompletedOrder";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/googleinfo" element={<GoogleJoin />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/" element={<MyPage />} />
+            <Route path="/order_completed" element={<Completed />} />
 
             {/* Default route to Home component */}
             {/* <Route path="/" element={<Navigate to="/home" />} /> */}
