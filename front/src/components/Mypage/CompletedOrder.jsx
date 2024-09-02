@@ -1,6 +1,6 @@
 import React from 'react';
 import './completed.css';
-import gifticon from './img/gift-2-line.svg';
+import gifticon from '../Weekly_image_sample/gift-2-line.svg';
 
 const Completed = () => {
   return (
