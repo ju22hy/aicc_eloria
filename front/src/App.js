@@ -8,11 +8,11 @@ import Detail from "./components/Product/Detail";
 import Login from "./components/Auth/Login";
 import JoinInfo from "./components/Auth/JoinInfo";
 import GoogleJoin from "./components/Auth/GoogleJoin";
-import Cart from "./components/Mypage/Cart";
-import MyPage from "./components/Mypage/MyPage";
+import Cart from "./components/Cart/Cart";
+import MyPage from "./components/Cart/MyPage";
 import Footer from "./components/Footer";
 import { RecoilRoot } from "recoil";
-import Completed from "./components/Mypage/CompletedOrder";
+import Completed from "./components/Cart/CompletedOrder";
 
 function App() {
   return (

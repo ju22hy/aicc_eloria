@@ -255,11 +255,7 @@ const Cart = () => {
               )}
             </tbody>
           </table>
-          {products.length === 0 && (
-            <div className="empty-cart-message">
-              장바구니에 담긴 상품이 없습니다.
-            </div>
-          )}
+
           {products.length > 0 && (
             <div className="cart-total">
               <div className="cart-caution">

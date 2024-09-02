@@ -46,7 +46,7 @@ const Navbar = () => {
 
       // 경고 창 띄우기
       const userConfirmed = window.confirm(
-        "로그인 시 사용할 수 있는 기능입니다. 로그인하시겠습니까?"
+        "로그인 시 사용할 수 있는 페이지입니다. 로그인하시겠습니까?"
       );
 
       if (userConfirmed) {

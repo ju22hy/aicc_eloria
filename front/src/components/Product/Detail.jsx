@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./detail.css";
 import { LuPlus, LuMinus } from "react-icons/lu";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Detail = () => {
   const stickyRef = useRef(null);
@@ -11,6 +12,7 @@ const Detail = () => {
   const { productid } = useParams();
 
   const [quantity, setQuantity] = useState(1);
+  const authData = useSelector((state) => state.auth.authData); // 로그인 상태 확인
 
   useEffect(() => {
     // 데이터 가져오기
@@ -24,7 +26,6 @@ const Detail = () => {
         console.error("Error fetching products:", error);
       });
   }, [productid]);
-  // console.log(product.productname);
 
   // 총 가격 계산 함수
   const calculateTotalPrice = () => {
@@ -47,22 +48,26 @@ const Detail = () => {
 
   // BUY NOW 버튼 클릭 핸들러
   const handleBuyNow = () => {
-    const userConfirmed = window.confirm(
-      "상품 구입이 완료되었습니다. 목록으로 이동하시겠습니까?"
-    );
-
-    if (userConfirmed) {
-      navigate("/category1");
-    }
+    navigate("/order_completed");
   };
 
   // ADD TO CART 버튼 클릭 핸들러
   const handleAddToCart = () => {
+    if (!authData) {
+      const userConfirmed = window.confirm(
+        "로그인 시 사용할 수 있는 페이지입니다. 로그인하시겠습니까?"
+      );
+
+      if (userConfirmed) {
+        navigate("/login");
+      }
+      return; // 로그인되지 않은 상태에서는 장바구니에 추가하지 않음
+    }
+
     const userConfirmed = window.confirm(
       "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하시겠습니까?"
     );
 
-    // 장바구니에 상품 추가 요청
     if (userConfirmed) {
       fetch(`http://localhost:8080/api/add-to-basket`, {
         method: "POST",
@@ -73,7 +78,6 @@ const Detail = () => {
         body: JSON.stringify({
           productid: productid,
           quantity: quantity,
-          // user_key: 'basket_key',
         }),
       })
         .then((response) => {
@@ -85,13 +89,11 @@ const Detail = () => {
         })
         .then((data) => {
           console.log("장바구니에 상품 추가 완료:", data);
+          navigate("/cart");
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
         });
-      navigate("/cart");
-
-      navigate("/cart");
     }
   };
 
@@ -124,7 +126,6 @@ const Detail = () => {
   }, []);
 
   if (!product) {
-    console.log(product);
     return <div>Loading...</div>; // 데이터를 로드하는 동안 로딩 메시지를 표시
   }
 
