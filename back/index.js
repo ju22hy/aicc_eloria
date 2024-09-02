@@ -8,6 +8,7 @@ const PORT = 8080;
 const app = express();
 const productRoutes = require('./controllers/product');
 const path = require('path');
+// const kakao = require('./controllers/kakao');
 
 app.use(
   session({
@@ -44,6 +45,7 @@ app.use('/basket', require('./routes/basketroutes'));
 app.use('/login', require('./routes/loginroutes'));
 app.use('/signup', require('./routes/signUproutes'));
 
+// kakao();
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 }); // 서버 실행 시 메시지

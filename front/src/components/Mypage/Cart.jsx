@@ -3,6 +3,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { basketState } from "../../recoil/atom";
 import ProductInCart from "./ProductInCart";
+import EmptyCart from "./EmptyCart";
 
 const Basket = () => {
   const basket = useRecoilValue(basketState);
@@ -16,16 +17,7 @@ const Basket = () => {
         MY CART
       </h1>
       <ProductInCart />
-      {/* {basket.length > 0 ? (
-        basket.map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.price}</p>
-          </div>
-        ))
-      ) : (
-        <p>Your basket is empty</p>
-      )} */}
+      {/* <EmptyCart /> */}
     </div>
   );
 };
