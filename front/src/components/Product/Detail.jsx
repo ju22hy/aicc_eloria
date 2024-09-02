@@ -62,6 +62,7 @@ const Detail = () => {
       "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하시겠습니까?"
     );
 
+    // 장바구니에 상품 추가 요청
     if (userConfirmed) {
       navigate("/cart");
     }
