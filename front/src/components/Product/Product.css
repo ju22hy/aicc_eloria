@@ -28,12 +28,8 @@
 }
 
 .menu-button:hover {
-  background-color: #e0e0e0;
-}
-
-.section product-images {
-  width: 100%;
-  height: 100%;
+  background-color: #222;
+  color: #fff;
 }
 
 .gender {
@@ -50,24 +46,24 @@
 .product-images {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4개의 컬럼으로 고정 */
   gap: 20px;
   padding: 0 40px;
 }
 
 .product-img {
   position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  cursor: pointer;
+  overflow: hidden;
 }
 
 .product-img img {
-  width: 330px;
-  height: 430px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
