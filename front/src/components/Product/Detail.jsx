@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './detail.css';
-import { LuPlus, LuMinus } from 'react-icons/lu';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import "./detail.css";
+import { LuPlus, LuMinus } from "react-icons/lu";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Detail = () => {
   const stickyRef = useRef(null);
@@ -21,15 +21,15 @@ const Detail = () => {
         setProduct(data);
       })
       .catch((error) => {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       });
   }, [productid]);
   // console.log(product.productname);
 
   // 총 가격 계산 함수
   const calculateTotalPrice = () => {
-    const priceString = product?.productprice || '0';
-    const price = parseFloat(priceString.replace(/,/g, ''));
+    const priceString = product?.productprice || "0";
+    const price = parseFloat(priceString.replace(/,/g, ""));
     return price * quantity;
   };
 
@@ -48,22 +48,22 @@ const Detail = () => {
   // BUY NOW 버튼 클릭 핸들러
   const handleBuyNow = () => {
     const userConfirmed = window.confirm(
-      '상품 구입이 완료되었습니다. 목록으로 이동하시겠습니까?'
+      "상품 구입이 완료되었습니다. 목록으로 이동하시겠습니까?"
     );
 
     if (userConfirmed) {
-      navigate('/category1');
+      navigate("/category1");
     }
   };
 
   // ADD TO CART 버튼 클릭 핸들러
   const handleAddToCart = () => {
     const userConfirmed = window.confirm(
-      '장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하시겠습니까?'
+      "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하시겠습니까?"
     );
 
     if (userConfirmed) {
-      navigate('/cart');
+      navigate("/cart");
     }
   };
 
@@ -83,15 +83,15 @@ const Detail = () => {
             const offset = ratio * relativeHeight;
             sticky.style.top = `-${offset}px`;
           } else {
-            sticky.style.top = '0';
+            sticky.style.top = "0";
           }
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
