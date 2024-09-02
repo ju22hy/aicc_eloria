@@ -1,0 +1,55 @@
+.completed-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.completed-wrapper {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  max-width: 500px;
+  width: 100%;
+}
+
+.icon-gift img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.completed-text p {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.completed-textsub p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin-top: 20px;
+}
+
+.completed-button {
+  margin-top: 20px;
+}
+
+.completed-button button {
+  background-color: #333;
+  color: #fff;
+  width: 130px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.completed-button button:hover {
+  background-color: #555;
+}
