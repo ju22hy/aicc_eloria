@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Crimson+Pro:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 .swiper-container {
   position: relative;
   width: 100%;
@@ -5,50 +7,169 @@
   overflow: hidden;
 }
 
-/* Swiper가 전체 화면을 차지하도록 설정 */
 .mySwiper {
-  width: 100%; /* 전체 너비를 차지하도록 설정 */
-  height: 100%; /* 전체 높이를 차지하도록 설정 */
-  position: absolute; /* 다른 요소와 겹치도록 설정 */
-  top: 0; /* 화면 상단에 위치하도록 설정 */
-  left: 0; /* 화면 왼쪽에 위치하도록 설정 */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* 각 슬라이드가 전체 화면을 차지하도록 설정 */
 .swiper-slide {
+  position: relative;
   text-align: center;
   font-size: 18px;
   background: #fff;
-  height: 100vh; /* 슬라이드 높이를 전체 화면 높이로 설정 */
-
-  /* 슬라이드 내용 중앙 정렬 */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 슬라이드 내 이미지가 슬라이드를 채우도록 설정 */
 .swiper-slide img {
-  display: block; /* 블록 요소로 설정 */
-  width: 100%; /* 이미지 너비를 슬라이드 너비와 맞춤 */
-  height: 100%; /* 이미지 높이를 슬라이드 높이와 맞춤 */
-  object-fit: cover; /* 이미지가 슬라이드를 완전히 채우도록 설정 */
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* 페이지네이션 위치 조정 */
-.mySwiper .swiper-pagination {
+/* 슬라이드 꾸밈 */
+/* 1번 슬라이드 */
+.slide-content {
+  position: absolute;
+  width: 100%;
+  bottom: 32%;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  _background: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+  border-radius: 10px;
+}
+
+.slogan-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slogan-kr {
+  font-size: 20px;
+  font-weight: 300;
+  transform: translate(-32%, 80%);
+  margin-bottom: 10px;
+  text-align: left;
+  width: 50%;
+  opacity: 0.6;
+}
+
+.slogan-en-top,
+.slogan-en-bottom {
+  font-family: "Crimson Pro", serif;
+  font-size: 64px;
+  font-weight: 300;
+  text-align: left;
+  width: 50%;
+  opacity: 0.9;
+}
+
+.slogan-en-top {
+  transform: translate(-35%, 0);
+}
+
+.slogan-en-bottom {
+  transform: translate(-22%, 0);
+}
+
+/* 2번 슬라이드 */
+.season {
+  font-family: "Crimson Pro", serif;
+  font-size: 80px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.special1 {
+  transform: translate(-35%, -140%);
+}
+
+.special2 {
+  transform: translate(35%, 190%);
+}
+
+.special-btn {
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: background-color 0.3s ease;
+}
+
+.special-btn:hover {
+  opacity: 0.8;
+}
+
+/* 3번 슬라이드 */
+.p-container {
+  width: 30%;
+  transform: translate(48%, 25%);
+  display: flex;
+  /* justify-content: center; */
+  align-items: start;
+  flex-direction: column;
+  text-align: left;
+}
+
+.p-container > h2 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.p-container > p {
+  max-width: 75%;
+  font-size: 18px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  white-space: normal;
+  padding-bottom: 40px;
+  opacity: 0.8;
+}
+
+.p-container > button {
+  color: #fff;
+  background-color: #222;
+  padding: 10px 20px;
+  font-size: 16px;
+  /* border: 1px solid #222; */
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+}
+
+.p-container > button:hover {
+  opacity: 0.9;
+}
+
+.swiper-pagination {
   bottom: 30px;
 }
 
-/* 페이지네이션 점 커스터마이징 */
-.mySwiper .swiper-pagination-bullet {
+.swiper-pagination-bullet {
   width: 8px;
   height: 8px;
   background-color: #fff;
   opacity: 0.3;
 }
 
-.mySwiper .swiper-pagination-bullet-active {
+.swiper-pagination-bullet-active {
   background-color: #fff;
   opacity: 0.8;
 }
@@ -58,7 +179,7 @@
 .swiper-button-prev {
   color: #fff;
   opacity: 0;
-  visibility: hidden; /* 기본 상태에서 버튼 숨기기 */
+  visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
