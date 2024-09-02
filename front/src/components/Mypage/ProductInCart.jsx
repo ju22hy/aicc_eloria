@@ -1,35 +1,44 @@
-import React, { useState } from "react";
-import "./productincart.css";
-import { LuPlus, LuMinus } from "react-icons/lu";
-import Ring1 from "../SubImage/product-ring1.jpg";
+import React, { useEffect, useState } from 'react';
+import './productincart.css';
+import { LuPlus, LuMinus } from 'react-icons/lu';
 
 const ProductInCart = () => {
-  const initialProducts = [
-    {
-      id: 1,
-      image: Ring1,
-      name: "SQUARE TANZ R. II",
-      price: 109000,
-      quantity: 1,
-      checked: true,
-    },
-    {
-      id: 2,
-      image: Ring1,
-      name: "SQUARE TANZ R. I",
-      price: 63000,
-      quantity: 1,
-      checked: true,
-    },
-    // 추가되는 상품 데이터는 여기에 추가
-  ];
-
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [allChecked, setAllChecked] = useState(true);
+
+  useEffect(() => {
+    // 사용자별 장바구니 데이터를 서버에서 가져오기
+    fetch('http://localhost:8080/api/get-basket', {
+      method: 'GET',
+      credentials: 'include', // 쿠키 포함 요청
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Fetched data:', data); // 데이터를 콘솔에 출력하여 확인
+        if (Array.isArray(data)) {
+          // 각 제품에 기본 수량(quantity)을 설정
+          const updatedProducts = data.map((product) => ({
+            ...product,
+            quantity: 1, // 기본 수량을 1로 설정
+            checked: true, // 기본 체크 상태
+          }));
+          setProducts(updatedProducts); // 서버에서 가져온 데이터가 배열이면 설정
+          setAllChecked(updatedProducts.every((product) => product.checked));
+        } else {
+          setProducts([]); // 데이터가 배열이 아닌 경우 빈 배열로 설정
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching basket data:', error);
+        setProducts([]); // 오류가 발생한 경우에도 안전하게 빈 배열로 설정
+      });
+  }, []);
 
   const handleCheckboxChange = (id) => {
     const updatedProducts = products.map((product) =>
-      product.id === id ? { ...product, checked: !product.checked } : product
+      product.productid === id
+        ? { ...product, checked: !product.checked }
+        : product
     );
     setProducts(updatedProducts);
     setAllChecked(updatedProducts.every((product) => product.checked));
@@ -47,7 +56,7 @@ const ProductInCart = () => {
 
   const handleIncreaseQuantity = (id) => {
     const updatedProducts = products.map((product) =>
-      product.id === id
+      product.productid === id
         ? { ...product, quantity: product.quantity + 1 }
         : product
     );
@@ -56,7 +65,7 @@ const ProductInCart = () => {
 
   const handleDecreaseQuantity = (id) => {
     const updatedProducts = products.map((product) =>
-      product.id === id && product.quantity > 1
+      product.productid === id && product.quantity > 1
         ? { ...product, quantity: product.quantity - 1 }
         : product
     );
@@ -64,11 +73,11 @@ const ProductInCart = () => {
   };
 
   const calculateTotalPrice = () => {
-    return products.reduce(
-      (total, product) =>
-        total + (product.checked ? product.price * product.quantity : 0),
-      0
-    );
+    return products.reduce((total, product) => {
+      const priceString = product?.productprice || '0';
+      const price = parseFloat(priceString.replace(/,/g, ''));
+      return total + (product.checked ? price * product.quantity : 0);
+    }, 0);
   };
 
   return (
@@ -92,17 +101,20 @@ const ProductInCart = () => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product.id}>
+              <tr key={product.productid}>
                 <td className="checkbox-td">
                   <input
                     type="checkbox"
                     checked={product.checked}
-                    onChange={() => handleCheckboxChange(product.id)}
+                    onChange={() => handleCheckboxChange(product.productid)}
                   />
                 </td>
                 <td className="product-info">
-                  <img src={product.image} alt={product.name} />
-                  <span>{product.name}</span>
+                  <img
+                    src={`http://localhost:8080/img/${product.productimage}`}
+                    alt={product.productname}
+                  />
+                  <span>{product.productname}</span>
                 </td>
                 <td>
                   <div className="quantity-td">
@@ -114,23 +126,23 @@ const ProductInCart = () => {
                     />
                     <LuPlus
                       className="plus-icon"
-                      onClick={() => handleIncreaseQuantity(product.id)}
+                      onClick={() => handleIncreaseQuantity(product.productid)}
                     />
                     <LuMinus
                       className="minus-icon"
-                      onClick={() => handleDecreaseQuantity(product.id)}
+                      onClick={() => handleDecreaseQuantity(product.productid)}
                     />
                   </div>
                 </td>
                 <td className="price-td">
-                  KRW {(product.price * product.quantity).toLocaleString()}
+                  KRW {product.productprice?.toLocaleString()}
                 </td>
                 <td>
                   <div className="option-td">
                     <button
                       className="cart-order"
                       onClick={() => {
-                        console.log(`${product.name} 주문`); // 기능 현재는 없음
+                        console.log(`${product.productname} 주문`); // 기능 현재는 없음
                       }}
                     >
                       주문하기
@@ -138,7 +150,7 @@ const ProductInCart = () => {
                     <button
                       className="cart-delete"
                       onClick={() => {
-                        console.log(`${product.name} 삭제`); // 기능 현재는 없음
+                        console.log(`${product.productname} 삭제`); // 기능 현재는 없음
                       }}
                     >
                       삭제하기

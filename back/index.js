@@ -8,6 +8,8 @@ const PORT = 8080;
 const app = express();
 const productRoutes = require('./controllers/product');
 const path = require('path');
+const basketController = require('./controllers/basket');
+// const router = express.Router();
 // const kakao = require('./controllers/kakao');
 
 app.use(
@@ -40,8 +42,13 @@ app.use('/auth', authRoutes); // 구글 라우트
 app.use('/api', productRoutes); // 상품 라우트
 app.use('/img/back/img', express.static(path.join(__dirname, '/img')));
 
+// 장바구니 라우트
+app.use('/api', basketController.checkBasket); // 권한 체크 미들웨어
+app.post('/api/add-to-basket', basketController.addToBasket);
+app.get('/api/get-basket', basketController.getBasket);
+app.post('/api/remove-from-basket', basketController.removeFromBasket);
+
 // 기존 라우트 설정
-app.use('/basket', require('./routes/basketroutes'));
 app.use('/login', require('./routes/loginroutes'));
 app.use('/signup', require('./routes/signUproutes'));
 
