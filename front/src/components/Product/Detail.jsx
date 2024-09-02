@@ -64,6 +64,33 @@ const Detail = () => {
 
     // 장바구니에 상품 추가 요청
     if (userConfirmed) {
+      fetch(`http://localhost:8080/api/add-to-basket`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          productid: productid,
+          quantity: quantity,
+          // user_key: 'basket_key',
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            // 서버 응답이 성공적이지 않은 경우 오류 처리
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("장바구니에 상품 추가 완료:", data);
+        })
+        .catch((error) => {
+          console.error("Error adding to cart:", error);
+        });
+      navigate("/cart");
+
       navigate("/cart");
     }
   };
