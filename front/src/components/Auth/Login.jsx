@@ -52,13 +52,18 @@ function Login() {
           const decoded = jwtDecode(res.data.token);
           console.log(decoded);
           dispatch(login({ authData: decoded }));
+          alert('로그인 성공 !');
           navigate('/');
         } else {
           alert('로그인에 실패했습니다.');
         }
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        if (error.response && error.response.data.error) {
+          alert(error.response.data.error); // 백엔드에서 보낸 에러 메시지
+        } else {
+          alert('로그인 중 오류가 발생했습니다.'); // 일반적인 에러 메시지
+        }
       });
   };
 
