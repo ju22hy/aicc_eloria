@@ -80,6 +80,30 @@ const ProductInCart = () => {
     }, 0);
   };
 
+  const handleDeleteProduct = (productid) => {
+    // 서버에 삭제 요청 보내기
+    fetch('http://localhost:8080/api/remove-from-basket', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ productid }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // 서버에서 삭제가 성공하면, 로컬 상태에서 해당 제품 제거
+        setProducts((prevProducts) =>
+          prevProducts.filter((product) => product.productid !== productid)
+        );
+      })
+      .catch((error) => {
+        console.error('Error deleting product from cart:', error);
+      });
+  };
+
   return (
     <div className="cart-container">
       <div className="cart-top">
@@ -149,9 +173,7 @@ const ProductInCart = () => {
                     </button>
                     <button
                       className="cart-delete"
-                      onClick={() => {
-                        console.log(`${product.productname} 삭제`); // 기능 현재는 없음
-                      }}
+                      onClick={() => handleDeleteProduct(product.productid)}
                     >
                       삭제하기
                     </button>
