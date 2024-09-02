@@ -67,13 +67,18 @@ function JoinInfo() {
       .post('http://localhost:8080/signup', formData)
       .then((res) => {
         if (res.status === 201) {
+          alert('회원가입 성공 ! 로그인 페이지로 이동합니다. ');
           navigate('/login');
         } else {
           alert('회원가입에 실패했습니다.');
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response && error.response.data.error) {
+          alert(error.response.data.error); // 백엔드에서 보낸 에러 메시지
+        } else {
+          alert('로그인 중 오류가 발생했습니다.'); // 일반적인 에러 메시지
+        }
       });
   };
 
