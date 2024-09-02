@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
 import { useNavigate } from 'react-router-dom';
+import ring1 from '../Weekly_image_sample/ring3.jpg';
+import earring1 from '../Weekly_image_sample/earring1.jpg';
+import earring2 from '../Weekly_image_sample/earring2.jpg';
+import bracelet1 from '../Weekly_image_sample/bracelet1.jpg';
 
 const Product = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -97,6 +101,36 @@ const Product = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className='section product-images'>
+        <div className='product-img 5'>
+          <img src={ring1} alt='상품5' />
+          <div className='product-text'>
+            <h2>BETWEEN RING</h2>
+            <p>KRW 89,000</p>
+          </div>
+        </div>
+        <div className='product-img 6'>
+          <img src={earring1} alt='상품6' />
+          <div className='product-text'>
+            <h2>TAP EARRINGS</h2>
+            <p>KRW 44,000</p>
+          </div>
+        </div>
+        <div className='product-img 7'>
+          <img src={earring2} alt='상품7' />
+          <div className='product-text'>
+            <h2>EVERYDAY HOOP EARRINGS</h2>
+            <p>KRW 59,000</p>
+          </div>
+        </div>
+        <div className='product-img 8'>
+          <img src={bracelet1} alt='상품8' />
+          <div className='product-text'>
+            <h2>BOLD ONYX BRACELET</h2>
+            <p>KRW 72,000</p>
+          </div>
+        </div>
       </div>
     </div>
   );

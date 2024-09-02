@@ -50,6 +50,7 @@
   grid-template-columns: repeat(4, 1fr); /* 4개의 컬럼으로 고정 */
   gap: 20px;
   padding: 0 40px;
+  margin-bottom: 50px;
 }
 
 .product-img {
