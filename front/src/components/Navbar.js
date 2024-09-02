@@ -40,6 +40,22 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const handleCartClick = (e) => {
+    if (!authData) {
+      e.preventDefault(); // 링크 기본 동작 막기
+
+      // 경고 창 띄우기
+      const userConfirmed = window.confirm(
+        "로그인 시 사용할 수 있는 기능입니다. 로그인하시겠습니까?"
+      );
+
+      if (userConfirmed) {
+        navigate("/login");
+      }
+      // '아니오'를 선택하면 아무런 동작을 하지 않음
+    }
+  };
+
   return (
     <nav className={isHomePage ? "home-nav" : "other-nav"}>
       <div className="nav_container">
@@ -91,7 +107,12 @@ const Navbar = () => {
                       isHomePage ? (isDark ? "dark-hover" : "light-hover") : ""
                     }
                   >
-                    <Link to={item.to}>{item.label}</Link>
+                    <Link
+                      to={item.to}
+                      onClick={item.label === "CART" ? handleCartClick : null}
+                    >
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
           </ul>
