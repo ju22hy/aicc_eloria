@@ -37,12 +37,12 @@ const Product = () => {
   });
 
   return (
-    <div className="Product-Page">
-      <div className="product-section">
-        <div className="gender">
+    <div className='Product-Page'>
+      <div className='product-section'>
+        <div className='gender'>
           <h1>WOMANS</h1>
         </div>
-        <div className="item-menu">
+        <div className='item-menu'>
           <button
             className={`menu-button ${
               activeCategory === 'ALL' ? 'active' : ''
@@ -79,7 +79,7 @@ const Product = () => {
       </div>
 
       {/* 상품 이미지 섹션 */}
-      <div className="section product-images">
+      <div className='section product-images'>
         {filteredProducts.map((product, index) => (
           <div
             key={product.productid}
@@ -91,7 +91,7 @@ const Product = () => {
               alt={product.product_name}
             />
 
-            <div href="" className="product-text">
+            <div href='' className='product-text'>
               <h2>{product.productname}</h2>
               <p>KRW {product.productprice.toLocaleString()}</p>
             </div>
