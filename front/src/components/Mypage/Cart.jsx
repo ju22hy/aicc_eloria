@@ -1,12 +1,14 @@
-// components/Basket.js
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { basketState } from "../../recoil/atom";
 import ProductInCart from "./ProductInCart";
-import EmptyCart from "./EmptyCart";
+// import EmptyCart from "./EmptyCart";
 
-const Basket = () => {
+const Cart = () => {
   const basket = useRecoilValue(basketState);
+
+  // 장바구니에 상품이 있는지 확인
+  const hasProductsInCart = basket && basket.length > 0;
 
   return (
     <div>
@@ -17,9 +19,8 @@ const Basket = () => {
         MY CART
       </h1>
       <ProductInCart />
-      {/* <EmptyCart /> */}
     </div>
   );
 };
 
-export default Basket;
+export default Cart;
