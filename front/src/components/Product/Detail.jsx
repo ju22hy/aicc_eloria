@@ -100,7 +100,7 @@ const Detail = () => {
         })
         .then((data) => {
           console.log("장바구니에 상품 추가 완료:", data);
-          navigate("/cart");
+          // navigate("/cart");
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
