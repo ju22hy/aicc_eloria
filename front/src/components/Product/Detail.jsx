@@ -106,6 +106,13 @@ const Detail = () => {
         })
         .then((data) => {
           alert(data.message);
+          const usercart = window.confirm(
+            '장바구니 페이지로 이동하시겠습니까?'
+          );
+
+          if (usercart) {
+            navigate('/cart');
+          }
           // navigate("/cart");
         })
         .catch((error) => {
