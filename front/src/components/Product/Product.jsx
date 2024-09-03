@@ -102,7 +102,7 @@ const Product = () => {
           </div>
         ))}
       </div>
-      <div className='section product-images'>
+      {/* <div className='section product-images'>
         <div className='product-img 5'>
           <img src={ring1} alt='상품5' />
           <div className='product-text'>
@@ -131,7 +131,7 @@ const Product = () => {
             <p>KRW 72,000</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className='pagination'>
         <button className='active'>1</button>
         <button>2</button>

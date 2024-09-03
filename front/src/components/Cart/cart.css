@@ -8,6 +8,7 @@
 
 .cart-table th,
 .cart-table td {
+  margin-bottom: -1.5px;
   border-bottom: 1px solid #aeaeae; /* 세로선 대신 하단에만 테두리 적용 */
 }
 
