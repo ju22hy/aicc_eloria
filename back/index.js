@@ -47,6 +47,10 @@ app.use('/api', basketController.checkBasket); // 권한 체크 미들웨어
 app.post('/api/add-to-basket', basketController.addToBasket);
 app.get('/api/get-basket', basketController.getBasket);
 app.post('/api/remove-from-basket', basketController.removeFromBasket);
+app.post(
+  '/api/select-remove-from-basket',
+  basketController.selectRemoveFromBasket
+);
 
 // 기존 라우트 설정
 app.use('/login', require('./routes/loginroutes'));
