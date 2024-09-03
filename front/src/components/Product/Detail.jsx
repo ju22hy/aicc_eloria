@@ -48,6 +48,17 @@ const Detail = () => {
 
   // BUY NOW 버튼 클릭 핸들러
   const handleBuyNow = () => {
+    if (!authData) {
+      const userConfirmed = window.confirm(
+        "로그인 시 사용할 수 있는 페이지입니다. 로그인하시겠습니까?"
+      );
+
+      if (userConfirmed) {
+        navigate("/login");
+      }
+      return; // 로그인되지 않은 상태에서는 장바구니에 추가하지 않음
+    }
+
     navigate("/order_completed");
   };
 
