@@ -98,6 +98,10 @@ const Cart = () => {
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.productid !== productid)
         );
+        return response.json();
+      })
+      .then((data) => {
+        alert(data.message);
       })
       .catch((error) => {
         console.error('Error deleting product from cart:', error);
@@ -126,7 +130,8 @@ const Cart = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('선택된 상품 삭제 완료:', data);
+        alert(data.message);
+        // console.log('선택된 상품 삭제 완료:', data);
         setProducts((prevProducts) =>
           prevProducts.filter(
             (product) => !selectedProductIds.includes(product.productid)
