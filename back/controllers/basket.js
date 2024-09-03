@@ -116,3 +116,33 @@ exports.removeFromBasket = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// 선택된 상품들을 장바구니에서 삭제
+exports.selectRemoveFromBasket = async (req, res) => {
+  try {
+    const { productids } = req.body;
+    const authData = JSON.parse(req.cookies.authData);
+    const email = authData.email;
+
+    // 선택된 productid 배열을 바인딩하여 장바구니에서 삭제
+    const result = await database.query(
+      'DELETE FROM basket WHERE email = $1 AND productid = ANY($2::int[])',
+      [email, productids]
+    );
+
+    if (result.rowCount === 0) {
+      return res
+        .status(404)
+        .json({ message: '장바구니에 해당 상품이 없습니다.' });
+    }
+
+    res
+      .status(200)
+      .json({ message: '선택된 상품들이 장바구니에서 삭제되었습니다.' });
+  } catch (error) {
+    console.error('Error deleting selected products from basket:', error);
+    res
+      .status(500)
+      .json({ message: '서버 오류: 선택된 상품들을 삭제할 수 없습니다.' });
+  }
+};
