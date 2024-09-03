@@ -92,7 +92,6 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .pagination button {
@@ -100,12 +99,13 @@
   padding: 5px 10px;
   border: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .pagination button.active {
   font-weight: bold;
   background-color: #e0dbd7;
+  border-radius: 50%;
 }
 
 .pagination button:disabled {
