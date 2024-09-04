@@ -9,40 +9,37 @@ import Login from "./components/Auth/Login";
 import JoinInfo from "./components/Auth/JoinInfo";
 import GoogleJoin from "./components/Auth/GoogleJoin";
 import Cart from "./components/Cart/Cart";
-import MyPage from "./components/Cart/MyPage";
+import MyPage from "./components/Mypage/MyPage";
 import Footer from "./components/Footer";
-import { RecoilRoot } from "recoil";
 import Completed from "./components/Cart/CompletedOrder";
 
 function App() {
   return (
-    <RecoilRoot>
-      <BrowserRouter>
-        <div className="App relative">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/category1" element={<Product />} />
-            <Route path="/category2" element={<Product />} />
-            <Route path="/product/:productid" element={<Detail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/joininfo" element={<JoinInfo />} />
-            <Route path="/googleinfo" element={<GoogleJoin />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/" element={<MyPage />} />
-            <Route path="/order_completed" element={<Completed />} />
+    <BrowserRouter>
+      <div className="App relative">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/category1" element={<Product />} />
+          <Route path="/category2" element={<Product />} />
+          <Route path="/product/:productid" element={<Detail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/joininfo" element={<JoinInfo />} />
+          <Route path="/googleinfo" element={<GoogleJoin />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/order_completed" element={<Completed />} />
 
-            {/* Default route to Home component */}
-            {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+          {/* Default route to Home component */}
+          {/* <Route path="/" element={<Navigate to="/home" />} /> */}
 
-            {/* Catch all unmatched routes and redirect to Home */}
-            <Route path="*" element={<Navigate to="/home" />} />
-          </Routes>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </RecoilRoot>
+          {/* Catch all unmatched routes and redirect to Home */}
+          <Route path="*" element={<Navigate to="/home" />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
