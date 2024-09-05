@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./mypage.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './mypage.css';
 
 function Mypage() {
   const [userInfo, setUserInfo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 열림 상태
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
-    nickname: "",
-    email: "",
-    contact: "",
+    nickname: '',
+    email: '',
+    contact: '',
   });
 
   useEffect(() => {
     // 유저 정보를 가져오는 API 호출
     axios
-      .get("http://localhost:8080/api/mypage/getUserInfo", {
+      .get('http://localhost:8080/api/mypage/getUserInfo', {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,10 +28,10 @@ function Mypage() {
         });
       })
       .catch((err) => {
-        console.error("Error fetching user info:", err);
+        console.error('Error fetching user info:', err);
         if (err.response && err.response.status === 401) {
-          alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
-          window.location.href = "/login";
+          alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
+          window.location.href = '/login';
         }
       });
   }, []);
@@ -49,32 +49,43 @@ function Mypage() {
   };
 
   const handleConfirmDelete = () => {
+    // 비밀번호 확인 요청
     axios
-      .post("http://localhost:8080/api/mypage/checkPassword", { password })
+      .post(
+        'http://localhost:8080/api/mypage/checkPassword',
+        { password },
+        { withCredentials: true }
+      )
       .then((res) => {
         if (res.status === 200) {
-          axios
-            .delete("http://localhost:8080/api/mypage/delete", {
-              data: { password },
-            })
-            .then((res) => {
-              if (res.status === 200) {
-                alert("회원 탈퇴가 완료되었습니다.");
-                window.location.href = "/";
-              }
-            })
-            .catch((err) => console.error("Error deleting user:", err));
+          // 비밀번호 확인 성공 후 탈퇴 요청
+          return axios.delete('http://localhost:8080/api/mypage/delete', {
+            withCredentials: true,
+          });
         } else {
-          setError("비밀번호가 일치하지 않습니다.");
+          setError('비밀번호가 일치하지 않습니다.');
         }
       })
-      .catch((err) => console.error("Error checking password:", err));
+      .then((res) => {
+        if (res && res.status === 200) {
+          alert('회원 탈퇴가 완료되었습니다.');
+          window.location.href = '/';
+        }
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 401) {
+          setError('비밀번호가 일치하지 않습니다.');
+        } else {
+          console.error('Error:', err);
+          setError('서버 오류가 발생했습니다.');
+        }
+      });
   };
 
   const handleCancelDelete = () => {
     setIsModalOpen(false);
-    setPassword("");
-    setError("");
+    setPassword('');
+    setError('');
   };
 
   if (!userInfo) {
