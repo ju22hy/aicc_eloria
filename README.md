@@ -70,7 +70,8 @@
 ---
 
 ## 기타
-> 실제 페이지 이미지 및 시연 영상은 ppt에서 확인 가능합니다.
+> 실제 페이지 이미지 및 여러 시연 영상은 ppt에서 확인 가능합니다.
 
 - 발표 ppt: https://docs.google.com/presentation/d/1ogUHvLS8hTqVLCnMMuruad6HoHfTssp_/edit?usp=sharing&ouid=115298485614702078157&rtpof=true&sd=true
+- 대표 시연 영상 드라이브 url: https://drive.google.com/file/d/1NnUIS8g7ExxD2rKu1kK6Fzlg8l6kpsgK/view?usp=drive_link
 - 배포 링크: 배포 종료
